@@ -1,0 +1,134 @@
+Spring Data JPA Changelog
+=========================
+
+Changes in version 1.1.0.RELEASE (2012-05-16)
+---------------------------------------------
+* JPA Repository can get typing of @Query annotated findXXX methods wrong (DATAJPA-169)
+* SimpleJpaRepository.delete(ID id) should validate entity/record existance prior to issue delete command (DATAJPA-177)
+* StackOverflowError during query parsing if repository method does nots match with a property (DATAJPA-179)
+* Typos in log message when named query is used with a Pageable (DATAJPA-186)
+* MergingPersistenceUnitManager potentially adds classes multiple times (DATAJPA-189)
+* JpaQueryExecution started to throw NullPointerException if pageable is null (DATAJPA-201)
+* Typo in reference (DATAJPA-153)
+* Readme file references old Spring Data JPA version (DATAJPA-155)
+* Ability to specify template when create QueryDSL JPAQuery (DATAJPA-181)
+* Provide more safety in custom @Queries with named @Params (DATAJPA-185)
+* Log level used for message generated with named query with a Pageable parameter lower than the actual severity of the issue (DATAJPA-187)
+* MergingPersistenceUnitManager should merge mapping file locations as well (DATAJPA-190)
+* Adapt changes in CrudRepository interface (DATAJPA-191)
+* @Query(nativeQuery=true) can't return List<Integer> (DATAJPA-207)
+* Add support for newly introduced StartingWith, EndingWith and Containing keywords (DATAJPA-180)
+* Support Before and After keywords for query creation (DATAJPA-188)
+* Minor typos in readme.md (DATAJPA-192)
+* Upgrade to Spring Data Commons 1.3.0.RC1 (DATAJPA-193)
+* Upgrade to Spring Data Commons 1.3.0.GA (DATAJPA-194)
+* Upgrade to Querydsl 2.5.0 (DATAJPA-203)
+* Sonar build is failing (DATAJPA-210)
+* Document CDI integration (DATAJPA-211)
+* Release 1.1 GA (DATAJPA-212)
+
+Changes in version 1.1.0.RC1 (2012-02-03)
+-----------------------------------------    
+* Support for locking (DATAJPA-73)
+* Added CDI integration for repositories (DATAJPA-136)
+* Support for @IdClass in entities (DATAJPA-50)
+* Support for LessThanEqual and GreaterThanEquals keywords in query methods (DATAJPA-108)
+* Support for True/False as query keywords (DATAJPA-132)
+* Queries derivated from methods now correctly bind null values using IS NULL (DATAJPA-121)
+* Added PersistenceUnitPostProcessor to scan a package for JPA entities with Spring 3.0 (DATAJPA-123, DATAJPA-124)
+* Improve performance for pagination queries if inexistant page is requested (DATAJPA-124)
+* Don't apply query hints to count queries for pagination (DATAJPA-54)
+* Fixed count query creation for manually declared queries with "order by" clause (DATAJPA-142)
+* @OneToOne mappings in AbstractAuditable should rather be @ManyToOne ones (DATAJPA-120)
+* Alias detection now works correctly with entity names containing numbers (DATAJPA-110)
+* Added @NativeQuery annotation for repositories to trigger native queries (DATAJPA-117)
+* Allow customization of NamedQuery to be used in @Query annotation (DATAJPA-129)
+* Let deleteAll() use cascading deletes and introduced deleteAllInBatch() (DATAJPA-137)
+* Fixed query creation for Comparable values (DATAJPA-99)
+* The SimpleJpaRepository's deleteAll() does not call em.clear() anymore (DATAJPA-111)
+* JpaMetamodelEntityInformation now deals with mapped superclasses as well (DATAJPA-141)
+* MergingPersistenceUnitManager now works with Spring 3.1.0 DefaultPersistenceUnitManager (DATAJPA-138)
+* Provide strategy interface to customize the date being set while auditing (DATAJPA-9)
+* Improve exception message when crating a query from a method name fails (DATAJPA-159)
+* Imporve injection of the EntityManager in QueryDslRepositorySupport (DATAJPA-135, DATAJPA-113)
+* Consolidate Expression creation for property references and sort orders (DATAJPA-103)
+* Fixed schema errors appearing in STS (DATAJPA-160)
+* Change build system to build against Spring 3.0.x / 3.1 / 3.2 (DATAJPA-127)
+* Upgraded dependency versions (Spring 3.0.7, Querydsl 2.3.0, Hibernate 3.6.9, EclipseLink 2.3.2, OpenJPA 2.1.1, AspectJ 1.6.12) (DATAJPA-102, DATAJPA-150, DATAJPA-145, DATAJPA-115)
+
+Changes in version 1.0.3.GA (2012-02-03)
+----------------------------------------
+* MergingPersistenceUnitManager doesnt work with Spring 3.1.0 DefaultPersistenceUnitManager (DATAJPA-138)
+* Spring Data- JPA Schema validation error in STS (DATAJPA-160)
+* Improve exception message when crating a query from a method name fails (DATAJPA-159)
+
+Changes in version 1.0.2.GA (2011-12-06)
+----------------------------------------
+* Fixed query creation for Comparable values (DATAJPA-99)
+* Fixed alias detection when entity name contained number (DATAJPA-110)
+* SimpleJpaRepository's deleteAll() does not call em.clear() anymore (DATAJPA-111)
+* Upgraded to Querydsl 2.2.5 (DATAJPA-102, DATAJPA-115)
+* Fixed auditor mappings in AbstractAuditable (DATAJPA-120)
+* Consolidate Expression creation for property references and sort orders (DATAJPA-103)
+* Fixed dependency injection in QueryDslRepositorySupport (DATAJPA-113)
+
+Changes in version 1.1.0.M1 (2011-09-05)
+----------------------------------------
+* Added ability to ignore case in derived method names (DATAJPA-92)
+* Upgraded dependency to Spring Data Commons 1.2.0.M1
+
+Changes in version 1.0.1.GA (2011-09-05)
+----------------------------------------
+* Fixed pagination for queries using group-by clause (DATAJPA-86)
+* Fixed NoSuchElementException for queries using dynamic sorting (DATAJPA-90)
+* JpaEntityInformationSupport.getMetadata(...) throws IllegalArgumentException if entity not found in JPA metamodel (DATAJPA-93)
+* Sort handed via Pageable instance is now again regarded by query execution (DATAJPA-94)
+* Fixed creating CriteriaQuery instances for some keywords when deriving queries from method names (DATAJPA-96)
+* Fixed manifest version reference of javax.annotation (DATAJPA-79)
+* Improved performanve of SimpleJpaRepository.exists(…) by not loading the entity (DATAJPA-81)
+* Updated reference documentation covering persistence exception translation, custom namespace attributes (DATAJPA-91, DATAJPA-88, DATAJPA-80)
+* Reformatted sources with Spring Data Eclipse formatter and added settings to project (DATAJPA-98)
+
+Changes in version 1.0.0.GA (2011-07-21)
+----------------------------------------
+* Updated to Spring Data Commons 1.1.0.RELEASE - (DATACMNS-53, DATACMNS-49)
+* Upgrade to Querydsl 2.2.0 (DATAJPA-78, DATACMNS-53)
+* Improved performance by caching CriteriaQuery creation if possible (DATAJPA-71)
+* Fixed version range for Spring Data Commons packages in template.mf (DATAJPA-72)
+* Fixed count query execution for pagination queries with manually defined query (DATAJPA-77)
+* Polished documentation
+
+Changes in version 1.0.0.RC1 (2011-06-21) - https://jira.springsource.org/browse/DATAJPA/fixforversion/11869
+-----------------------------------------
+* Expose findAll(Specification<T> spec, Sort sort) in JpaSpecificationExecutor (DATAJPA-48)
+* Improved target domain class detection for queries returning void and numeric values (DATAJPA-44)
+* Improved extensibility of QueryDslJpaRepository (DATAJPA-39)
+* Configured Maven build to include Bundlor generated MANIFEST.MF (DATAJPA-42)
+* Improved performance of query execution by uhsing method.getAnnotation(…) instead of AnnotationUtils.getAnnotation(…)
+* Fixed exception thrown in QueryDslJpaRepository#findAll(Predicate predicate, Pageable pageable) if no result found (DATAJPA-61, DATACMNS-23)
+* Improved error message in JpaQueryMethod (DATAJPA-59, DATAJPA-60)
+* Querydsl dependency is now optional (DATAJPA-62)
+* Improved isNew detection in AuditingEntityListener (DATAJPA-68)
+* Documented In and NotIn keywords (DATAJPA-56)
+* Updated documentation regarding Specifications usage (DATAJPA-43)
+* Added MergingPersistenceUnitManager (DATAJPA-38)
+* Added support for searching by Specification and Sort (DATAJPA-48)
+* Automatic query creation now uses ParameterExpression binding over literal binding (DATAJPA-64)
+* Changed clearAutomatically attribute of @Modifying to default to false (DATAJPA-31)
+* JpaPersistableEntityInformation now uses Persistable.isNew(…) (DATAJPA-58)
+
+Changes in version 1.0.0.M2 (2011-03-24) - https://jira.springsource.org/browse/DATAJPA/fixforversion/11800
+----------------------------------------
+* Dynamic sorting functionality (through Sort query method parameter) works again
+* Added support for 'Distinct' (DATACMNS-15)
+* Added support for 'In' and 'NotIn' (DATAJPA-30)
+* Adapted new metadata API (DATAJPA-32, DATACMNS-17)
+* Support for XML based entity mapping (DATAJPA-28)
+* @Query annotated queries get validated on Query meta-model creation (DATAJPA-14)
+* Fixed dependency scopes and missing repository declarations (DATAJPA-33, DATAJPA-26)
+* Adapted meta-model API from Commons module (DATAJPA-32)
+* Added support for QueryDsl (DATAJPA-8)
+
+Changes in version 1.0.0.M1 (2011-02-10) - https://jira.springsource.org/browse/DATAJPA/fixforversion/11786
+----------------------------------------
+* Moved JPA sepcific code from Hades into Spring Data JPA (functional equivalent of Hades 2.0.2) building on common functionality in Spring Data Commons
