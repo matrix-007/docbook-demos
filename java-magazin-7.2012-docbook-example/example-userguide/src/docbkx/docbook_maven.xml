@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:m="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>DocBook &amp; Apache Maven</title>
+
+    <subtitle>From Wikipedia, the free encyclopedia</subtitle>
+
+    <releaseinfo>Release Version</releaseinfo>
+
+    <author>
+      <orgname>ConceptPeople consulting gmbh</orgname>
+    </author>
+
+    <pubdate>20.04.2012</pubdate>
+  </info>
+
+  <chapter>
+    <title>DocBook</title>
+
+    <section>
+      <title>Introduction</title>
+
+      <para>DocBook is a semantic markup language for technical documentation.
+      It was originally intended for writing technical documents related to
+      computer hardware and software but it can be used for any other sort of
+      documentation.As a semantic language, DocBook enables its users to
+      create document content in a presentation-neutral form that captures the
+      logical structure of the content; that co</para>
+
+      <para>ntent can then be published in a variety of formats, including
+      HTML, XHTML, EPUB, PDF, man pages, Web help and HTML Help, without
+      requiring users to make any changes to the source.</para>
+
+      <figure>
+        <title>DocBook</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata contentwidth="2in" fileref="images/docbook-logo.png"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section>
+      <title>Overview</title>
+
+      <para>DocBook is an XML language. In its current version (5.0),
+      DocBook's language is formally defined by a RELAX NG schema with
+      integrated Schematron rules. (There are also W3C XML Schema+Schematron
+      and Document Type Definition (DTD) versions of the schema available, but
+      these are considered non-standard.)</para>
+
+      <para>As a semantic language, DocBook documents do not describe what
+      their contents "look like," but rather the <literal>meaning</literal> of
+      those contents. For example, rather than explaining how the abstract for
+      an article might be visually formatted, DocBook simply says that a
+      particular section <literal>is</literal> an abstract. It is up to an
+      external processing tool or application to decide where on a page the
+      abstract should go and what it should look like or whether or not it
+      should be included in the final output at all. DocBook provides a vast
+      number of semantic element tags. They are divided into three broad
+      categories: structural, block-level, and inline.</para>
+
+      <section>
+        <title>Structural tags</title>
+
+        <para>Structural tags specify broad characteristics of their contents.
+        The book element, for example, specifies that its child elements
+        represent the parts of a <literal>book</literal>. This includes a
+        title, chapters, glossaries, appendices, and so on. DocBook's
+        structural tags include, but are not limited to:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><literal>set:</literal> a titled collection of one or more
+            <literal>books</literal>. Sets can be nested with other
+            sets.</para>
+          </listitem>
+
+          <listitem>
+            <para><literal>book:</literal> a titled collection of
+            <literal>chapters</literal>, <literal>articles</literal>, and/or
+            <literal>parts</literal>, with optional glossaries, appendices,
+            and so forth.</para>
+          </listitem>
+
+          <listitem>
+            <para><literal>part:</literal> a titled collection of one or more
+            <literal>chapters</literal>. Parts can be nested with other parts.
+            May have special introductory text.</para>
+          </listitem>
+
+          <listitem>
+            <para><literal>article:</literal> a titled, unnumbered collection
+            of block-level elements.</para>
+          </listitem>
+
+          <listitem>
+            <para><literal>chapter:</literal> a titled, numbered collection of
+            block-level elements. DocBook does not actually require that
+            chapters be explicitly given numbers; it is understood by the
+            semantics that the number of a chapter is the number of previous
+            chapter elements in the XML document plus 1.</para>
+          </listitem>
+
+          <listitem>
+            <para><literal>appendix:</literal> the contained text represents
+            an appendix.</para>
+          </listitem>
+
+          <listitem>
+            <para><literal>dedication:</literal> the text represents the
+            dedication of the contained structural element.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Structural elements can contain other structural elements.
+        Structural elements are the only permitted top-level elements in a
+        DocBook document.</para>
+      </section>
+
+      <section>
+        <title>Block-level tags</title>
+
+        <para>Block-level tags are elements like paragraph, lists, and so
+        forth. Not all of these elements can contain actual text directly.
+        Sequential block-level elements are expected to be rendered one
+        "after" another. After, in this case, can differ depending on the
+        language. In most Western languages, "after" means below: text
+        paragraphs are printed down the page. Other languages' writing systems
+        can have different directionality; for example, in Japanese, text is
+        often printed in columns, with paragraphs running from right to left,
+        so "after" in that case would be to the left. DocBook semantics are
+        entirely neutral to these kinds of language-based concepts.</para>
+      </section>
+
+      <section>
+        <title>Inline-level tags</title>
+
+        <para>Inline-level tags are elements like emphasis, hyperlinks, and so
+        forth. They wrap text within a block-level element. These elements do
+        not cause the text to break when rendered in a paragraph format, but
+        typically they cause the document processor to apply some kind of
+        distinct typographical treatment to the enclosed text, by changing the
+        font, size, or similar attributes. (The DocBook specification does say
+        that it expects different typographical treatment, but it does not
+        offer specific requirements as to what this treatment may be.) That
+        is, it is not required that a DocBook processor transform an
+        <literal>emphasis</literal> tag into "italics." A reader-based DocBook
+        processor could increase the volume of the words. Or, a text-based
+        processor could use bold instead of italics.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Sample document</title>
+
+      <example>
+          <title>Simple Book Sample</title>
+
+          <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;book xml:id="simple_book" xmlns="http://docbook.org/ns/docbook" version="5.0"&gt;
+  &lt;title&gt;Very simple book&lt;/title&gt;
+  &lt;chapter xml:id="chapter_1"&gt;
+    &lt;title&gt;Chapter 1&lt;/title&gt;
+    &lt;para&gt;Hello world!&lt;/para&gt;
+    &lt;para&gt;I hope that your day is proceeding 
+    &lt;emphasis&gt;splendidly&lt;/emphasis&gt;!&lt;/para&gt;
+  &lt;/chapter&gt;
+  &lt;chapter xml:id="chapter_2"&gt;
+    &lt;title&gt;Chapter 2&lt;/title&gt;
+    &lt;para&gt;Hello again, world!&lt;/para&gt;
+  &lt;/chapter&gt;
+&lt;/book&gt;</programlisting>
+        </example>
+
+      <para>Semantically, this document is a "book," with a "title," that
+      contains two "chapters" each with their own "titles." Those "chapters"
+      contain "paragraphs" that have text in them. The markup is fairly
+      readable in English. In more detail, the root element of the document is
+      book. All DocBook elements are in an XML Namespace, so the root element
+      has an <emphasis>xmlns</emphasis> attribute to set the current
+      namespace. Also, the root element of a DocBook document must have a
+      <emphasis>version</emphasis> that specifies the version of the format
+      that the document is built on. (XML documents can include elements from
+      multiple namespaces at once. For simplicity, the example does not
+      illustrate this.)</para>
+
+      <para>A <literal>book</literal> element must contain a
+      <literal>title</literal>, or an <literal>info</literal> element
+      containing a <literal>title</literal>. This must be before any child
+      structural elements. Following the title are the structural children, in
+      this case, two <literal>chapter</literal> elements. Each of these must
+      have a <literal>title</literal>. They contain <literal>para</literal>
+      block elements which can contain free text and other inline elements
+      like the <literal>emphasis</literal> in the second paragraph of the
+      first chapter.</para>
+    </section>
+
+    <section>
+      <title>Schemas and validation</title>
+
+      <para>Rules such as the ones alluded to in the preceding paragraph
+      (<emphasis>"a book element must contain a title, or an info element
+      containing a title,"</emphasis> etc.) are formally defined in the
+      DocBook <emphasis>schema</emphasis>. Appropriate programming tools can
+      be used to <emphasis>validate</emphasis> an XML document (DocBook or
+      otherwise), against its corresponding schema, in order to determine if
+      (and if so, where) the document fails to conform to that schema. XML
+      editing tools can also use schema information to avoid creating
+      non-conforming documents in the first place.</para>
+    </section>
+
+    <section>
+      <title>DocBook authoring</title>
+
+      <para>Because DocBook is XML, documents can be created and edited with
+      any text editor. A dedicated XML Editor is likewise a functional DocBook
+      editor. DocBook provides schema files for popular XML schema languages,
+      so any XML Editor that can provide content completion based on a schema
+      can do so for DocBook. Many graphical or WYSIWYG XML editors come with
+      the ability to edit DocBook like a Word Processor.</para>
+    </section>
+
+    <section>
+      <title>DocBook processing</title>
+
+      <para>Because DocBook is an XML format, conforming to a well-defined
+      schema, documents can be validated and processed using any tool or
+      programming language which includes XML support. DocBook files are used
+      to prepare output files in a wide variety of formats. Nearly always,
+      this is accomplished using DocBook XSL stylesheets. These are XSLT
+      stylesheets that transform DocBook documents into a number of formats
+      (HTML, XSL-FO for later conversion into PDF, etc.). These stylesheets
+      can be sophisticated enough to generate tables of contents, glossaries,
+      and indexes. They can oversee the selection of particular designated
+      portions of a master document to produce different versions of the same
+      document (such as a "tutorial" or a "quick-reference guide," where both
+      of these consist of a subset of the material). Because the standard
+      DocBook XSL stylesheets <emphasis>are</emphasis> well-formed XSL
+      stylesheets, and DocBook <emphasis>is</emphasis> well-formed XML, users
+      can write their own customized stylesheets or even a full-fledged
+      program to process the DocBook into an appropriate output format as
+      their needs dictate.</para>
+    </section>
+
+    <section>
+      <title>History</title>
+
+      <para>DocBook began in 1991 in discussion groups on Usenet and evenually
+      became a joint project of HAL Computer Systems and O'Reilly &amp;
+      Associates and eventually spawned its own maintenance organization (the
+      Davenport Group) before moving in 1998 to the SGML Open consortium,
+      which subsequently became OASIS. DocBook is currently maintained by the
+      DocBook Technical Committee at OASIS. DocBook is available in both SGML
+      and XML forms, as a DTD. RELAX NG and W3C XML Schema forms of the XML
+      version are available. Starting with DocBook 5, the RELAX NG version is
+      the "normative" form from which the other formats are generated. DocBook
+      originally started out as an SGML application, but an equivalent XML
+      application was developed and has now replaced the SGML one for most
+      uses. (Starting with version 4 of the SGML DTD, the XML DTD continued
+      with this version numbering scheme.) Initially, a key group of software
+      companies used DocBook since their representatives were involved in its
+      initial design. Eventually, however, DocBook was adopted by the open
+      source community where it has become a standard for creating
+      documentation for many projects, including FreeBSD, KDE, GNOME desktop
+      documentation, the GTK+ API references, the Linux kernel documentation,
+      and the work of the Linux Documentation Project. Norman Walsh and the
+      DocBook Project development team maintain the key application for
+      producing output from DocBook source documents: A set of XSL stylesheets
+      (as well as a legacy set of DSSSL stylesheets) that can generate
+      high-quality HTML and print (FO/PDF) output, as well as output in other
+      formats, including RTF, man pages and HTML Help. Walsh is also the
+      principal author of the book <citation>DocBook 5: The Definitive Guide 2012</citation>,
+      the official documentation of DocBook. This book is
+      available online under the GFDL, and also as a print publication.</para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Apache Maven</title>
+
+    <section>
+      <title>Introduction</title>
+
+      <para>Maven is a build automation tool typically used for Java projects.
+      Maven serves a similar purpose to the Apache Ant tool, but it is based
+      on different concepts and works in a profoundly different manner. It can
+      also be used to build and manage projects written in C#, Ruby, Scala,
+      and other languages. Maven is hosted by the Apache Software Foundation,
+      where it was formerly part of the Jakarta Project.</para>
+
+      <para>Maven uses an XML file to describe the software project being
+      built, its dependencies on other external modules and components, the
+      build order, directories, and required plug-ins. It comes with
+      pre-defined targets for performing certain well-defined tasks such as
+      compilation of code and its packaging.</para>
+
+      <para>Maven dynamically downloads Java libraries and Maven plug-ins from
+      one or more repositories such as the Maven 2 Central Repository. This
+      local cache of downloaded artifacts can also be updated with artifacts
+      created by local projects. Public repositories can also be
+      updated.</para>
+
+      <para>Maven is built using a plugin-based architecture that allows it to
+      make use of any application controllable through standard input.
+      Theoretically, this would allow anyone to write plugins to interface
+      with build tools (compilers, unit test tools, etc.) for any other
+      language. In reality, support and use for languages other than Java has
+      been minimal. Currently a plugin for the .NET framework exists and is
+      maintained, and a C/C++ native plugin is maintained for Maven 2
+      maven-native and maven-nar.</para>
+
+      <figure>
+        <title>Apache Maven</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata contentwidth="2in" fileref="images/maven_logo.gif"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section>
+      <title>Example</title>
+
+      <para>Maven projects are configured using a Project Object Model, which
+      is stored in a <filename>pom.xml</filename>-file. Here's a minimal
+      example:</para>
+
+      <example>
+          <title>Maven Example</title>
+
+          <programlisting language="xml">&lt;project&gt;
+  &lt;!-- model version is always 4.0.0 for Maven 2.x POMs --&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+ 
+  &lt;!-- project coordinates, i.e. a group of values which
+       uniquely identify this project --&gt;
+  &lt;groupId&gt;com.mycompany.app&lt;/groupId&gt;
+  &lt;artifactId&gt;my-app&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+ 
+  &lt;!-- library dependencies --&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+ 
+      &lt;!-- coordinates of the required library --&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+ 
+      &lt;!--this dependency is only used for running and compiling tests--&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+ 
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;</programlisting>
+        </example>
+
+      <para>This POM only defines a unique identifier for the project
+      (<emphasis>coordinates</emphasis>) and its dependency on the JUnit
+      framework. However, that is already enough for building the project and
+      running the unit tests associated with the project. Maven accomplishes
+      this by embracing the idea of Convention over Configuration, that is,
+      Maven provides default values for the project's configuration. The
+      directory structure of a normal idiomatic Maven project has the
+      following directory entries:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <colspec colwidth="*" />
+
+          <colspec colwidth="*" />
+
+          <tbody>
+            <row>
+              <entry>Directory name</entry>
+
+              <entry>Purpose</entry>
+            </row>
+
+            <row>
+              <entry>project home</entry>
+
+              <entry>Contains the pom.xml and all subdirectories.</entry>
+            </row>
+
+            <row>
+              <entry>src/main/java</entry>
+
+              <entry>Contains the deliverable Java sourcecode for the
+              project.</entry>
+            </row>
+
+            <row>
+              <entry>src/main/resources</entry>
+
+              <entry>Contains the deliverable resources for the project, such
+              as property files.</entry>
+            </row>
+
+            <row>
+              <entry>src/test/java</entry>
+
+              <entry>Contains the testing classes (JUnit or TestNG test cases,
+              for example) for the project.</entry>
+            </row>
+
+            <row>
+              <entry>src/test/resources</entry>
+
+              <entry>Contains resources necessary for testing.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>Then the command</para>
+
+      <programlisting>mvn package</programlisting>
+
+      <para>will compile all the Java files, run any tests, and package the
+      deliverable code and resources into
+      <filename>target/my-app-1.0.jar</filename> (assuming the artifactId is
+      my-app and the version is 1.0.) Using Maven itself, the user provides
+      only configuration for the project, while the configurable plug-ins do
+      the actual work of compiling the project, cleaning target directories,
+      running unit tests, generating API documentation and so on. In general,
+      users should not have to write plugins themselves. Contrast this with
+      Ant and make in which one writes imperative procedures for doing the
+      aforementioned tasks.</para>
+    </section>
+
+    <section>
+      <title>Concepts</title>
+
+      <section>
+        <title>Project Object Model</title>
+
+        <para>A Project Object Model (POM) provides all the configuration for
+        a single project. General configuration covers the project's name, its
+        owner and its dependencies on other projects. One can also configure
+        individual phases of the build process, which are implemented as
+        plugins. For example, one can configure the compiler-plugin to use
+        Java version 1.5 for compilation, or specify packaging the project
+        even if some unit test fails. Larger projects should be divided into
+        several modules, or sub-projects, each with its own POM. One can then
+        write a root POM through which one can compile all the modules with a
+        single command. POMs can also inherit configuration from other POMs.
+        All POMs inherit from the Super POM by default. The Super POM provides
+        default configuration, such as default source directories, default
+        plugins, and so on.</para>
+      </section>
+
+      <section>
+        <title>Plugins</title>
+
+        <para>Most of Maven's functionality is in plugins. A plugin provides a
+        set of goals that can be executed using the following syntax:</para>
+
+        <programlisting>mvn [plugin-name]:[goal-name]</programlisting>
+
+        <para>For example, a Java project can be compiled with the
+        compiler-plugin's compile-goal by running mvn
+        <literal>compiler:compile</literal>. There are Maven plugins for
+        building, testing, source control management, running a web server,
+        generating Eclipse project files, and much more. Plugins are
+        introduced and configured in a &lt;plugins&gt;-section of a
+        <filename>pom.xml</filename> file. Some basic plugins are included in
+        every project by default, and they have sensible default
+        settings.</para>
+
+        <para>However, it would be cumbersome if one would have to run several
+        goals manually in order to build, test and package a project:</para>
+
+        <programlisting> mvn compiler:compile
+ mvn surefire:test
+ mvn jar:jar</programlisting>
+
+        <para>Maven's lifecycle-concept handles this issue.</para>
+      </section>
+
+      <section>
+        <title>Build lifecycles</title>
+
+        <para>Build lifecycle is a list of named <emphasis>phases</emphasis>
+        that can be used to give order to goal execution. One of Maven's
+        standard lifecycles is the <emphasis>default lifecycle</emphasis>,
+        which includes the following phases, in this order:<footnote>
+            <para><link
+            xlink:href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference">http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference</link></para>
+          </footnote></para>
+
+        <orderedlist>
+          <listitem>
+            <para><literal>process-resources</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>compile</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>process-test-resources</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>test-compile</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>test</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>package</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>install</literal></para>
+          </listitem>
+
+          <listitem>
+            <para><literal>deploy</literal></para>
+          </listitem>
+        </orderedlist>
+
+        <para>Goals provided by plugins can be associated with different
+        phases of the lifecycle. For example, by default, the goal
+        "compiler:compile" is associated with the compile-phase, while the
+        goal "surefire:test" is associated with the test-phase. When the
+        command</para>
+
+        <programlisting>mvn test</programlisting>
+
+        <para>is executed, Maven will run all the goals associated with each
+        of the phases up to the test-phase. So it will run the
+        "resources:resources"-goal associated with the
+        process-resources-phase, then "compiler:compile", and so on until it
+        finally runs the "surefire:test"-goal. Maven also has standard
+        lifecycles for cleaning the project and for generating a project site.
+        If cleaning were part of the default lifecycle, the project would be
+        cleaned every time it was built. This is clearly undesirable, so
+        cleaning has been given its own lifecycle. Thanks to standard
+        lifecycles, one should be able to build, test and install every
+        Maven-project using the <literal>mvn install</literal>-command.</para>
+      </section>
+
+      <section>
+        <title>Dependencies</title>
+
+        <para>The example section hinted at Maven's dependency-handling
+        mechanism. A project that needs the Hibernate-library simply has to
+        declare Hibernate's project coordinates in its POM. Maven will
+        automatically download the dependency and the dependencies that
+        Hibernate itself needs (called transitive dependencies) and store them
+        in the user's local repository. Maven 2 Central Repository is used by
+        default to search for libraries, but one can configure the
+        repositories used (e.g. company-private repositories) in POM. There
+        are search engines such as Maven Central, which can be used to find
+        out coordinates for different open-source libraries and frameworks.
+        Projects developed on a single machine can depend on each other
+        through the local repository. The local repository is a simple folder
+        structure which acts both as a cache for downloaded dependencies and
+        as a centralized storage place for locally built artifacts. The Maven
+        command <literal>mvn install</literal> builds a project and places its
+        binaries in the local repository. Then other projects can utilize this
+        project by specifying its coordinates in their POMs.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Comparison with similar tools</title>
+
+      <para>The fundamental difference between Maven and Ant is that Maven's
+      design regards all projects as having a certain structure and a set of
+      supported task work-flows (e.g. getting resources from source control,
+      compiling the project, unit testing, etc.). While most software projects
+      in effect support these operations and actually do have a well-defined
+      structure, Maven requires that this structure and the operation
+      implementation details be defined in the POM file. Thus, Maven relies on
+      a convention on how to define projects and on the list of work-flows
+      that are generally supported in all projects.</para>
+
+      <para>This design constraint is more like how an IDE handles projects
+      and it provides many benefits, such as a succinct project definition and
+      the possibility of automatic integration of a Maven project with other
+      development tools such as IDEs, build servers, etc. The downside is that
+      it requires a user to first understand what a project is from the Maven
+      point of view and how Maven works with projects, because what happens
+      when one executes a phase in Maven is not immediately obvious just from
+      examining the Maven project file. This required structure is also often
+      a barrier in migrating a mature project to Maven because it is usually
+      hard to adapt from other approaches.</para>
+
+      <para>In Ant, projects do not really exist from the tool's technical
+      perspective. Ant works with XML build scripts defined in one or more
+      files. It processes targets from these files and each target executes
+      tasks. Each task performs a technical operation such as running a
+      compiler or copying files around. Tasks are executed primarily in the
+      order given by their defined dependency on other tasks. Thus, Ant is a
+      tool that chains together tasks and executes them based on
+      inter-dependencies and other Boolean conditions.</para>
+
+      <para>The benefits provided by Ant are also numerous. It has an XML
+      language optimized for clearer definition of what each task does and on
+      what it depends. Also, all the information about what will be executed
+      by an Ant target can be found in the Ant script. A developer not
+      familiar with Ant would normally be able to determine what a simple Ant
+      script does just by examining the script. This is not usually true for
+      Maven.</para>
+
+      <para>However, even an experienced developer that is new to a project
+      using Ant cannot infer what the higher level structure of an Ant script
+      is and what it does without examining the script in detail. Depending on
+      the script's complexity, this can quickly become a daunting challenge.
+      With Maven, a developer who previously worked with other Maven projects
+      can quickly examine the structure of a never before seen Maven project
+      and execute the standard Maven work-flows against it while already
+      knowing what to expect as an outcome.</para>
+
+      <para>It is possible to use Ant scripts that are defined and behave in a
+      uniform manner for all projects in a working group or an organization.
+      However, when the number and complexity of projects rises, it is also
+      very easy to stray from the initially desired uniformity. With Maven
+      this is less of a problem because the tool always imposes a certain way
+      of doing things.</para>
+
+      <para>Note that it is also possible to extend and configure Maven in a
+      way that departs from the Maven way of doing things.</para>
+    </section>
+
+    <section>
+      <title>IDE integration</title>
+
+      <para>Add-ons to several popular Integrated Development Environments
+      exist to provide integration of Maven with the IDE's build mechanism and
+      source editing tools, allowing Maven to compile projects from within the
+      IDE, and also to set the classpath for code completion, highlighting
+      compiler errors, etc. Examples of popular IDEs supporting development
+      with Maven include:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><link
+          xlink:href="http://www.eclipse.org/">Eclipse</link></para>
+        </listitem>
+
+        <listitem>
+          <para><link xlink:href="http://netbeans.org/">NetBeans</link></para>
+        </listitem>
+
+        <listitem>
+          <para><link xlink:href="http://www.jetbrains.com/idea/">IntelliJ
+          IDEA</link></para>
+        </listitem>
+
+        <listitem>
+          <para><link
+          xlink:href="http://www.embarcadero.com/products/jbuilder">JBuilder</link></para>
+        </listitem>
+
+        <listitem>
+          <para><link
+          xlink:href="http://www.oracle.com/technetwork/developer-tools/jdev/overview/index.html">JDeveloper</link></para>
+        </listitem>
+
+        <listitem>
+          <para><link
+          xlink:href="http://www.myeclipseide.com/">MyEclipse</link></para>
+        </listitem>
+      </itemizedlist>
+
+      <para>These add-ons also provide the ability to edit the POM or use the
+      POM to determine a project's complete set of dependencies directly
+      within the IDE.</para>
+
+      <para>Some built-in features of IDEs are forfeited when the IDE no
+      longer performs compilation. For example, Eclipse's JDT has the ability
+      to recompile a single java source file after it has been edited. Many
+      IDEs work with a flat set of projects instead of the hierarchy of
+      folders preferred by Maven. This complicates the use of SCM systems in
+      IDEs when using Maven.</para>
+    </section>
+
+    <section>
+      <title>History</title>
+
+      <para>Maven, created by Sonatype's Jason van Zyl, began as a subproject
+      of Apache Turbine in 2002. In 2003, it was voted on and accepted as a
+      top level Apache Software Foundation project. In July 2004, Maven was
+      released as the critical first milestone, v1.0. Maven 2 was declared
+      v2.0 in October 2005 after about 6 months in beta cycles. Maven 3.0 was
+      released in October 2010 being mostly backwards compatible with Maven
+      2.</para>
+    </section>
+
+    <section>
+      <title>Future</title>
+
+      <para>Maven 3.0 information began trickling out in 2008. After eight
+      alpha releases, the first beta version of Maven 3.0 was released in
+      April 2010. Maven 3.0 has reworked the core Project Builder
+      infrastructure such that the POMs file-based representation is now
+      decoupled from its in-memory object representation. This has expanded
+      the possibility for Maven 3.0 add-ons to leverage non-XML based project
+      definition files. Languages suggested include Ruby (already in private
+      prototype by Jason van Zyl), YAML, and Groovy. Experimental work for a
+      YAML-based POM definition file (requires an external conversion script
+      to be executed) has been piloted by Don Brown of Atlassian. Special
+      attention has been paid to ensuring compatibility between Maven 2 and 3.
+      For most projects, an upgrade to Maven 3 won't require any adjustments
+      of their project structure. The first beta of Maven 3 saw the
+      introduction of a parallel build feature which leverages a configurable
+      number of cores on a multi-core machine and is especially suited for
+      large multi-module projects.</para>
+    </section>
+  </chapter>
+
+  <bibliography>
+    <title>Referenzen</title>
+
+    <bibliomixed><abbrev>DocBook Wikipedia 2012</abbrev><title>Wikipedia Artikel zu
+    DocBook http://en.wikipedia.org/wiki/DocBook</title></bibliomixed>
+
+    <bibliomixed><abbrev>Apache Maven Wikipedia 2012</abbrev><title>Wikipedia
+    Artikel zu Apache Maven
+    http://en.wikipedia.org/wiki/Apache_maven</title></bibliomixed>
+
+    <bibliomixed><abbrev>DocBook 5: The Definitive Guide 2012</abbrev>
+    <title>HTML-Version (1.0.1) des Buchs von Norman Walsh
+    http://www.docbook.org/tdg5/</title></bibliomixed>
+
+    <bibliomixed><abbrev>DocBook XSL: The Complete Guide 2007</abbrev>
+    <title>DocBook 5 Guide von Bob Stayton
+    http://www.sagehill.net/docbookxsl/index.html</title></bibliomixed>
+
+    <bibliomixed><abbrev>DocBook XSL Stylesheets: Reference Documentation</abbrev>
+    <title>Parameter Reference von Norman Walsh
+    http://docbook.xml-doc.org/snapshots/xsl/doc/index.html</title></bibliomixed>
+
+    <bibliomixed><abbrev>Docbkx-Tool 2012</abbrev><title>DocBook Maven Plugin
+    http://docbkx-tools.sourceforge.net/</title></bibliomixed>
+
+    <bibliomixed><abbrev>Docbkx User Guide 2012</abbrev>
+    <title>Beispielkonfigurationen für das Maven Docbkx Plugin
+    http://docbkx-tools.sourceforge.net/docbkx-samples/manual.html</title></bibliomixed>
+
+    <bibliomixed><abbrev>FOP Pdf-Images 2010</abbrev>
+    <title>Erweiterung für Apache FOP um PDF-Images
+    http://www.jeremias-maerki.ch/download/fop/pdf-images/
+    </title></bibliomixed>
+
+    <bibliomixed><abbrev>POM Reference 2012</abbrev><title>Konfiguration einer
+    Maven pom-Datei http://maven.apache.org/pom.html</title></bibliomixed>
+
+    <bibliomixed><abbrev>Processing XML with Java 2002</abbrev>
+    <title>Beschreibung von Elliotte Rusty Harold wie man XSLT um Java erweitert
+    http://cafeconleche.org/books/xmljava/chapters/ch17s03.html</title></bibliomixed>
+
+    <bibliomixed><abbrev>EXSLT 2006</abbrev><title>Erweiterung von XSLT um
+    neue Funktionen http://www.exslt.org/</title></bibliomixed>
+
+    <bibliomixed><abbrev>XML Bible 2001</abbrev><title>Fünf Beispielkapitel
+    aus der XML Bibel von Elliotte Rusty Harold
+    http://www.cafeconleche.org/books/bible2/chapters/</title></bibliomixed>
+
+    <bibliomixed><abbrev>DocBook FAQ</abbrev><title>Häufig gestellte Fragen zu
+    DocBook http://www.dpawson.co.uk/docbook/</title></bibliomixed>
+
+    <bibliomixed><abbrev>XSL FAQ</abbrev><title>Häufig gestellte Fragen zu XSL
+    http://www.dpawson.co.uk/xsl/index.html</title></bibliomixed>
+
+    <bibliomixed><abbrev>Maven Docbook for beginners 2010</abbrev><title>Quick
+    Start für Docbook mit Maven
+    http://www.vineetmanohar.com/2010/02/maven-docbook-for-beginners/</title></bibliomixed>
+
+    <bibliomixed><abbrev>XMLmind XML Editor 2012</abbrev><title>Editor für
+    Docbook-Dokumente http://www.xmlmind.com/xmleditor/</title></bibliomixed>
+
+    <bibliomixed><abbrev>XSL-FO Tutorial 2012</abbrev><title>XSL-FO Tutorial
+    mit Anwendungsbeispielen
+    http://www.data2type.de/xml-xslt-xslfo/xsl-fo</title></bibliomixed>
+
+    <bibliomixed><abbrev>XSL-FO Tutorial 2007</abbrev><title>XSL-FO Tutorial
+    als PDF
+    http://www.ecrion.com/Support/PDF/XSL-FOTutorial.pdf</title></bibliomixed>
+
+    <bibliomixed><abbrev>DocBook Wiki 2012</abbrev><title>Wiki von NormanWalsh
+    über DocBook http://wiki.docbook.org/Home</title></bibliomixed>
+
+    <bibliomixed><abbrev>Using DocBook XSL Stylesheets 2003</abbrev>
+    <title>Anleitung für DocBook XSL Stylesheets von Robert Stayton
+    http://xml.web.cern.ch/XML/www.sagehill.net/xml/docbookxsl/index.html</title></bibliomixed>
+  </bibliography>
+</book>
