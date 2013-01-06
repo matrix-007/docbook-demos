@@ -46,7 +46,7 @@
 	<!-- Bestimmt den Zeilenabstand -->
 	<xsl:param name="line-height" select="'1.3'" />
 
-	<!-- Position der Titel festlegen -->
+	<!-- Set Title Position -->
 	<xsl:param name="formal.title.placement">
 		figure after
 		example after
@@ -56,7 +56,7 @@
 		task before
 	</xsl:param>
 
-	<!-- Erzeugt PDF-Bookmarks -->
+	<!-- Generate PDF-Bookmarks -->
 	<xsl:param name="fop.extensions" select="0" />
 	<xsl:param name="fop1.extensions" select="1" />
 	<xsl:param name="tablecolumns.extension" select="0" />
@@ -77,18 +77,18 @@
 		*********************************************
 	-->
 
-	<!-- Stylen von literal, parameter, programlisting usw. -->
+	<!-- Style for literal, parameter, programlisting and so on. -->
 	<xsl:attribute-set name="monospace.properties">
 		<xsl:attribute name="font-family">Courier New</xsl:attribute>
 		<xsl:attribute name="font-size">10pt</xsl:attribute>
 	</xsl:attribute-set>
 
-	<!-- Bilder zentriert ausrichten -->
+	<!-- Image Align -->
 	<xsl:attribute-set name="figure.properties">
 		<xsl:attribute name="text-align">center</xsl:attribute>
 	</xsl:attribute-set>
 
-	<!-- Soll herausfliessen von Text aus Zellen eingrenzen -->
+	<!-- Should limit the cell padding of text. -->
 	<xsl:attribute-set name="table.cell.padding">
 		<xsl:attribute name="padding-right">4pt</xsl:attribute>
 		<xsl:attribute name="padding-left">4pt</xsl:attribute>
@@ -96,7 +96,7 @@
 		<xsl:attribute name="padding-top">2pt</xsl:attribute>
 	</xsl:attribute-set>
 
-	<!-- Ueberschriften der verschiedenen Abschnitte stylen -->
+	<!-- Section Title's Level 1 Style -->
 	<xsl:attribute-set name="section.title.level1.properties">
 		<xsl:attribute name="font-size">16pt</xsl:attribute>
 		<xsl:attribute name="color">#b23040</xsl:attribute>
@@ -130,8 +130,7 @@
 	</xsl:attribute-set>
 
 	<!--
-		Code-Beispiele stylen (Hat auch Auswirkung auf <screen>, <literallayout>,
-		und andere "preformatted" block-level Elemente)
+	    Code Example Styles. e.g. screen, liter
 	-->
 	<xsl:attribute-set name="monospace.verbatim.properties"
 		use-attribute-sets="verbatim.properties">
@@ -147,14 +146,14 @@
 		<xsl:attribute name="line-height">1.0</xsl:attribute>
 	</xsl:attribute-set>
 
-	<!-- Ueberschriften fuer Bilder, Tabellen und Code stylen -->
+	<!-- Superscriptions for images tables and code style -->
 	<xsl:attribute-set name="formal.title.properties"
 		use-attribute-sets="normal.para.spacing">
 		<xsl:attribute name="font-size">10pt</xsl:attribute>
 		<xsl:attribute name="font-weight">normal</xsl:attribute>
 		<xsl:attribute name="color">#b23040</xsl:attribute>
 		<xsl:attribute name="hyphenate">false</xsl:attribute>
-		<!-- Titel fuer Code-Beispiele etwas einruecken -->
+		<!-- Title For Code Example -->
 		<xsl:attribute name="start-indent">
 		<xsl:choose>
 			<xsl:when test="self::db:example">
@@ -173,7 +172,7 @@
 		<xsl:attribute name="space-before">5px</xsl:attribute>
 	</xsl:attribute-set>
 
-	<!-- Setzt den Abstand zwischen den Elementen einer Aufzaehlung -->
+	<!-- List Item Spacing -->
 	<xsl:attribute-set name="list.item.spacing">
 		<xsl:attribute name="space-before.optimum">0.08em</xsl:attribute>
 		<xsl:attribute name="space-before.minimum">0.06em</xsl:attribute>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.data</groupId>
 	<artifactId>spring-data-jpa</artifactId>
 	<version>1.2.0.BUILD-SNAPSHOT</version>
-	
+
 	<name>Spring Data JPA</name>
 	<description>Spring Data module to provide sophisticated support for JPA repositories</description>
 	<url>http://www.springsource.org/spring-data</url>
@@ -13,7 +14,7 @@
 		<name>SpringSource</name>
 		<url>http://www.springsource.org</url>
 	</organization>
-	
+
 	<developers>
 		<developer>
 			<id>ogierke</id>
@@ -27,7 +28,7 @@
 			<timezone>+1</timezone>
 		</developer>
 	</developers>
-	
+
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -50,7 +51,7 @@
 			</comments>
 		</license>
 	</licenses>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<dist.id>spring-data-jpa</dist.id>
@@ -62,20 +63,18 @@
 		<dist.fileName>${dist.finalName}.zip</dist.fileName>
 		<dist.filePath>target/${dist.fileName}</dist.filePath>
 		<dist.bucketName>dist.springframework.org</dist.bucketName>
-		<!-- these properties should be in ~/.m2/settings.xml
-		<dist.accessKey>s3 access key</dist.accessKey>
-		<dist.secretKey>s3 secret key</dist.secretKey>
-		-->
+		<!-- these properties should be in ~/.m2/settings.xml <dist.accessKey>s3 
+			access key</dist.accessKey> <dist.secretKey>s3 secret key</dist.secretKey> -->
 	</properties>
-	
+
 	<profiles>
-		
+
 		<profile>
-			<!-- Profile used when doing milestone or release ddeployments-->
-			<id>distribute</id>			
+			<!-- Profile used when doing milestone or release ddeployments -->
+			<id>distribute</id>
 			<build>
 				<plugins>
-				
+
 					<plugin>
 						<groupId>com.agilejava.docbkx</groupId>
 						<artifactId>docbkx-maven-plugin</artifactId>
@@ -94,16 +93,18 @@
 								<groupId>org.docbook</groupId>
 								<artifactId>docbook-xml</artifactId>
 								<version>4.4</version>
+								<classifier>resources</classifier>
+								<type>zip</type>
 								<scope>runtime</scope>
 							</dependency>
 						</dependencies>
 						<configuration>
-						    <includes>index.xml</includes>
+							<includes>index.xml</includes>
 							<xincludeSupported>true</xincludeSupported>
-							<foCustomization>${project.basedir}/src/docbkx/resources/xsl/fopdf.xsl</foCustomization>
+							<foCustomization>${basedir}/src/docbkx/resources/xsl/fopdf.xsl</foCustomization>
 							<htmlStylesheet>css/html.css</htmlStylesheet>
 							<chunkedOutput>false</chunkedOutput>
-							<htmlCustomization>${project.basedir}/src/docbkx/resources/xsl/html.xsl</htmlCustomization>
+							<htmlCustomization>${basedir}/src/docbkx/resources/xsl/html.xsl</htmlCustomization>
 							<useExtensions>1</useExtensions>
 							<highlightSource>1</highlightSource>
 							<entities>
@@ -113,21 +114,23 @@
 								</entity>
 							</entities>
 							<postProcess>
-								<copy todir="${project.basedir}/target/site/reference">
-									<fileset dir="${project.basedir}/target/docbkx">
+								<copy todir="${basedir}/target/site/reference">
+									<fileset dir="${basedir}/target/docbkx">
 										<include name="**/*.html" />
 										<include name="**/*.pdf" />
 									</fileset>
 								</copy>
-								<copy todir="${project.basedir}/target/site/reference/html">
-									<fileset dir="${project.basedir}/src/docbkx/resources">
+								<copy todir="${basedir}/target/site/reference/html">
+									<fileset dir="${basedir}/src/docbkx/resources">
 										<include name="**/*.css" />
 										<include name="**/*.png" />
 										<include name="**/*.gif" />
 										<include name="**/*.jpg" />
 									</fileset>
 								</copy>
-								<move file="${project.basedir}/target/site/reference/pdf/index.pdf" tofile="${project.basedir}/target/site/reference/pdf/${project.artifactId}-reference.pdf" failonerror="false" />
+								<move file="${basedir}/target/site/reference/pdf/index.pdf"
+									tofile="${basedir}/target/site/reference/pdf/${project.artifactId}-reference.pdf"
+									failonerror="false" />
 							</postProcess>
 						</configuration>
 					</plugin>
@@ -145,7 +148,7 @@
 								<phase>package</phase>
 								<configuration>
 									<descriptors>
-										<descriptor>${project.basedir}/src/assembly/distribution.xml</descriptor>
+										<descriptor>${basedir}/src/assembly/distribution.xml</descriptor>
 									</descriptors>
 									<appendAssemblyId>false</appendAssemblyId>
 								</configuration>
@@ -156,23 +159,24 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 	<dependencies>
-	
-	
+
+
 	</dependencies>
-	
+
 	<build>
-		
+
 		<extensions>
 			<extension>
-				<!-- available only in the springframework maven repository. see <repositories> section below -->
+				<!-- available only in the springframework maven repository. see <repositories> 
+					section below -->
 				<groupId>org.springframework.build.aws</groupId>
 				<artifactId>org.springframework.build.aws.maven</artifactId>
 				<version>3.1.0.RELEASE</version>
 			</extension>
 		</extensions>
-		
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -205,9 +209,86 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>com.agilejava.docbkx</groupId>
+				<artifactId>docbkx-maven-plugin</artifactId>
+				<version>2.0.13</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate-html</goal>
+							<goal>generate-pdf</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.docbook</groupId>
+						<artifactId>docbook-xml</artifactId>
+						<version>4.4</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<includes>index.xml</includes>
+					<xincludeSupported>true</xincludeSupported>
+					<foCustomization>${basedir}/src/docbkx/resources/xsl/fopdf.xsl</foCustomization>
+					<htmlStylesheet>css/html.css</htmlStylesheet>
+					<chunkedOutput>false</chunkedOutput>
+					<htmlCustomization>${basedir}/src/docbkx/resources/xsl/html.xsl</htmlCustomization>
+					<useExtensions>1</useExtensions>
+					<highlightSource>1</highlightSource>
+					<entities>
+						<entity>
+							<name>version</name>
+							<value>${project.version}</value>
+						</entity>
+					</entities>
+					<postProcess>
+						<copy todir="${basedir}/target/site/reference">
+							<fileset dir="${basedir}/target/docbkx">
+								<include name="**/*.html" />
+								<include name="**/*.pdf" />
+							</fileset>
+						</copy>
+						<copy todir="${basedir}/target/site/reference/html">
+							<fileset dir="${basedir}/src/docbkx/resources">
+								<include name="**/*.css" />
+								<include name="**/*.png" />
+								<include name="**/*.gif" />
+								<include name="**/*.jpg" />
+							</fileset>
+						</copy>
+						<move file="${basedir}/target/site/reference/pdf/index.pdf"
+							tofile="${basedir}/target/site/reference/pdf/${project.artifactId}-reference.pdf"
+							failonerror="false" />
+					</postProcess>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>distribution</id>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<descriptors>
+								<descriptor>${basedir}/src/assembly/distribution.xml</descriptor>
+							</descriptors>
+							<appendAssemblyId>false</appendAssemblyId>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	
+
 
 	<repositories>
 		<repository>
@@ -215,7 +296,7 @@
 			<url>http://repo.springsource.org/libs-snapshot</url>
 		</repository>
 	</repositories>
-	
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>spring-plugins-release</id>
