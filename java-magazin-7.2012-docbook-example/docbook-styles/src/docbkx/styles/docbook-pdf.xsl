@@ -61,12 +61,6 @@
   <xsl:param name="fop1.extensions" select="1" />
   <xsl:param name="tablecolumns.extension" select="0" />
 
-  <!-- Fit Page Width -->
-  <xsl:attribute-set name="monospace.verbatim.properties">
-    <xsl:attribute name="wrap-option">wrap</xsl:attribute>
-    <xsl:attribute name="hyphenation-character">\</xsl:attribute>
-  </xsl:attribute-set>
-
   <!--
       Profiling Parameter; funktioniert nur im Zusammenhang mit
       "urn:docbkx:stylesheet/profile-docbook.xsl"
@@ -135,17 +129,14 @@
     <xsl:attribute name="font-style">italic</xsl:attribute>
   </xsl:attribute-set>
 
-  <xsl:attribute-set name="monospace.verbatim.properties">
-    <xsl:attribute name="wrap-option">wrap</xsl:attribute>
-    <xsl:attribute name="hyphenation-character">\</xsl:attribute>
-  </xsl:attribute-set>
-
   <!--
       Code-Beispiele stylen (Hat auch Auswirkung auf <screen>, <literallayout>,
       und andere "preformatted" block-level Elemente)
   -->
   <xsl:attribute-set name="monospace.verbatim.properties"
 		     use-attribute-sets="verbatim.properties">
+    <xsl:attribute name="wrap-option">wrap</xsl:attribute>
+    <xsl:attribute name="hyphenation-character">\</xsl:attribute>
     <xsl:attribute name="font-size">9pt</xsl:attribute>
     <xsl:attribute name="border-color">#000000</xsl:attribute>
     <xsl:attribute name="border-style">solid</xsl:attribute>

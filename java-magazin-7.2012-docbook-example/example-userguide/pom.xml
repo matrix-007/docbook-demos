@@ -150,10 +150,93 @@
 					<highlightXslthlConfig>${workDirectory}/styles/highlighters/xslthl-config.xml</highlightXslthlConfig>
 
 					<!-- Allgemeine Schriftart angeben -->
-					<bodyFontFamily>Calibri</bodyFontFamily>
+					<bodyFontFamily>Times New Roman</bodyFontFamily>
+
 
 					<!-- Eigene Fonts einbinden -->
 					<fonts>
+						<!-- chinese font -->
+						<font>
+							<name>Microsoft YaHei</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/msyh/msyh.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/msyh/msyh.xml</metricsFile>
+						</font>
+						<font>
+							<name>Microsoft YaHei</name>
+							<style>normal</style>
+							<weight>bold</weight>
+							<embedFile>${workDirectory}/styles/fonts/msyh/msyhbd.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/msyh/msyhbd.xml</metricsFile>
+						</font>
+						<font>
+							<name>SimSun</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/simsun/simsun.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/simsun/simsun.xml</metricsFile>
+						</font>
+						<font>
+							<name>SimSun</name>
+							<style>normal</style>
+							<weight>bold</weight>
+							<embedFile>${workDirectory}/styles/fonts/simsun/simsunbd.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/simsun/simsunbd.xml</metricsFile>
+						</font>
+						<font>
+							<name>SimHei</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/simhei/simhei.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/simhei/simhei.xml</metricsFile>
+						</font>
+					
+						<!-- 仿宋 -->
+						<font>
+							<name>SimFang</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/simfang/simfang.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/simfang/simfang.xml</metricsFile>
+						</font>
+						<!-- 楷体 -->
+						<font>
+							<name>SimKai</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/simkai/simkai.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/simkai/simkai.xml</metricsFile>
+						</font>
+						<!-- english font -->
+						<font>
+							<name>Times New Roman</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/times/times.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/times/times.xml</metricsFile>
+						</font>
+						<font>
+							<name>Times New Roman</name>
+							<style>normal</style>
+							<weight>bold</weight>
+							<embedFile>${workDirectory}/styles/fonts/simhei/timesbd.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/simhei/timesbd.xml</metricsFile>
+						</font>
+						<font>
+							<name>Times New Roman</name>
+							<style>italic</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/styles/fonts/times/timesi.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/times/timesi.xml</metricsFile>
+						</font>
+						<font>
+							<name>Times New Roman</name>
+							<style>italic</style>
+							<weight>bold</weight>
+							<embedFile>${workDirectory}/styles/fonts/times/timesbi.ttf</embedFile>
+							<metricsFile>${workDirectory}/styles/fonts/times/timesbi.xml</metricsFile>
+						</font>
 						<font>
 							<name>Calibri</name>
 							<style>normal</style>
