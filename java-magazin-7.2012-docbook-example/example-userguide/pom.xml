@@ -131,8 +131,6 @@
 
 					
 					<highlightXslthlConfig>${workDirectory}/highlighters/xslthl-config.xml</highlightXslthlConfig>
-					<externalFOPConfiguration>${workDirectory}/fonts/fop-conf.xml</externalFOPConfiguration>
-					
 					<imgSrcPath>urn:docbkx:stylesheet/images</imgSrcPath>
 
 					<!-- Eigene Styles fuer PDF -->
