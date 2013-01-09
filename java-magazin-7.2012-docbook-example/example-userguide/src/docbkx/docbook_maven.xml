@@ -7,7 +7,7 @@
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
   <info>
-    <title>DocBook &amp; Apache Maven</title>
+    <title>DocBook 中文手册</title>
 
     <subtitle>From Wikipedia, the free encyclopedia</subtitle>
 
@@ -24,7 +24,7 @@
     <title>DocBook</title>
 
     <section>
-      <title>Introduction</title>
+      <title>介绍</title>
 
       <para>DocBook is a semantic markup language for technical documentation.
       It was originally intended for writing technical documents related to

@@ -13,10 +13,11 @@
 			<outputDirectory />
 			<includes>
 				<include>assembly/userguide-zip.xml</include>
-				<include>styles/**</include>
-				<include>images/dbx/**</include>
+				<include>css/**</include>
 				<include>images/**</include>
-				<include>images/callouts/**</include>
+				<include>highlighters/**</include>
+				<include>fonts/**</include>
+				<include>xsl/**</include>
 			</includes>
 		</fileSet>
 		<fileSet>
