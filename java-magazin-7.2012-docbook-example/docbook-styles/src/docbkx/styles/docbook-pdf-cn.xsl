@@ -72,7 +72,7 @@
   -->
   <xsl:param name="symbol.font.family" />
 
-	<xsl:param name="title.font.family">Calibri,Microsoft YaHei</xsl:param>
+  <xsl:param name="title.font.family">Calibri,Microsoft YaHei</xsl:param>
   <!--
       *********** Text-Elemente stylen ************
       *********************************************
@@ -146,7 +146,7 @@
     <xsl:attribute name="padding">5px</xsl:attribute>
     <xsl:attribute name="padding-top">2px</xsl:attribute>
     <xsl:attribute name="margin">2mm</xsl:attribute>
-    <xsl:attribute name="font-family">Courier New,SimSun</xsl:attribute>
+    <xsl:attribute name="font-family">Courier Newo,SimSun</xsl:attribute>
     <xsl:attribute name="line-height">1.0</xsl:attribute>
   </xsl:attribute-set>
 
