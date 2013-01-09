@@ -1,0 +1,349 @@
+body {
+   text-align: justify;
+   margin-right: 2em;
+   margin-left: 2em;
+   font-family: Verdana, Arial, helvetica, "Microsoft YaHei", sans-serif;
+}
+
+a,
+a[accesskey^="h"],
+a[accesskey^="n"],
+a[accesskey^="u"],
+a[accesskey^="p"] {
+    font-size: 12px;
+	color: #003399;
+}
+
+a:active {
+    color: #003399;
+}
+
+a:visited {
+    color: #888888;
+}
+
+/*
+p {
+	text-indent: 2em;
+}
+*/
+
+dt {
+	font-size: 12px;
+}
+
+p, dl, dt, dd, blockquote {
+    color: #000000;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    padding-top: 0px;
+}
+
+ol, ul, p {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    text-indent: 0em;
+}
+
+p, blockquote {
+    font-size: 90%;
+}
+
+p.releaseinfo {
+    font-size: 100%;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+p.pubdate {
+    font-size: 120%;
+    font-weight: bold; 
+    font-family: Verdana, Arial, helvetica, "Microsoft YaHei", sans-serif;
+}
+
+td {
+    font-size: 80%;
+}
+
+td, th, span {
+    color: #000000;
+}
+
+td[width^="40%"] {
+    font-size: 12px;
+	color: #003399;
+}
+
+table[summary^="Navigation header"] tbody tr th[colspan^="3"] {
+}
+
+blockquote {
+    margin-right: 0px;
+}
+
+h1, h2, h3, h4, h6, H6    {
+    color: #000000;
+    font-weight: 500;
+    margin-top: 0px;
+    padding-top: 14px;
+    margin-bottom: 0px;
+}
+
+h2.title {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+h2.subtitle {
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.firstname, .surname {
+	font-size: 12px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px black;
+    empty-cells: hide;
+    margin: 10px 0px 30px 50px;
+    width: 90%;
+}
+
+div.table {
+	margin: 30px 0px 30px 0px;
+	border: 1px dashed gray;
+	padding: 10px;
+}
+
+div .table-contents table {
+	border: 1px solid black;
+}
+
+div.table > p.title {
+	padding-left: 10px;
+}
+
+table[summary^="Navigation footer"] {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px black;
+    empty-cells: hide;    
+    margin: 0px;
+    width: 100%;
+}
+
+table[summary^="Note"], table[summary^="Warning"], table[summary^="Tip"] {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px black;
+    empty-cells: hide;    
+    margin: 10px 0px 10px -20px;
+    width: 100%;
+}
+
+td {
+    padding: 4pt;
+}
+
+div.warning TD {
+	text-align: justify;
+}
+
+h1 { 
+    font-size: 150%; 
+}
+
+h2 { 
+    font-size: 110%; 
+}
+
+h3 {
+    font-size: 100%; font-weight: bold; 
+}
+
+h4 { 
+    font-size: 90%; font-weight: bold;
+}
+
+h5 {
+    font-size: 90%; font-style: italic; 
+}
+
+h6 { 
+    font-size: 100%; font-style: italic; 
+}
+
+tt {
+    font-size: 110%;
+    font-family: Consolas, "Courier New", Courier, "Microsoft YaHei", monospace;
+    color: #000000;
+}
+
+.navheader, .navfooter {
+	border: none;
+}
+
+div.navfooter table {
+}
+
+pre {
+    font-size: 80%;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #F4F4F4;
+    font-family: Consolas, "Courier New", Courier, "Microsoft YaHei", monospace;
+}
+
+ul, ol, li {
+    list-style: disc;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: #CCCCCC;
+    border-width: 0px;
+    padding: 0px;
+}
+
+.variablelist { 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    margin: 0;
+}
+
+.term { 
+    font-weight:bold;
+}
+
+.figure {
+	margin: 0 auto;
+	text-align:center;
+}
+
+.figure .mediaobject {
+	margin: 0;
+	padding: 0;
+}
+
+.legalnotice {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.sidebar {
+    float: right;
+    margin: 10px 0px 10px 30px;
+    padding: 10px 20px 20px 20px;
+    width: 33%;
+    border: 1px solid black;
+    background-color: #F4F4F4;
+    font-size: 14px;
+}
+
+.property, code {
+	font-family: Consolas, "Courier New", Courier, "Microsoft YaHei", monospace;
+}
+
+a code {
+	font-size: 12px;
+}
+
+td code {
+    font-size: 110%;
+}
+
+div.note {
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #cdddeb;
+}
+
+div.tip {
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #eef6fd;
+}
+
+div.warning {
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #ffff33;
+}
+
+div.important {
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #d61818;
+}
+
+div.caution {
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #850000;
+}
+
+div.note * td,
+div.tip * td,
+div.warning * td {
+	text-align: justify;
+	font-size: 100%;
+}
+
+.programlisting .interfacename,
+.programlisting .literal,
+.programlisting .classname {
+    font-size: 95%;
+}
+
+/* everything in a <lineannotation/> is displayed in a coloured, comment-like font */
+.programlisting * .lineannotation,
+.programlisting * .lineannotation * {
+	color: green;
+}
+
+.hl-keyword {
+  color: #7F0055;
+  font-weight: bold; 
+}
+
+.hl-comment {
+  color: #3F5F5F;
+  font-style: italic;
+}
+
+.hl-multiline-comment {
+  color: #3F5FBF;
+  font-style: italic;
+}
+
+.hl-tag {
+  color: #3F7F7F;
+}
+
+.hl-attribute {
+  color: #7F007F;
+}
+
+.hl-value {
+  color: #2A00FF;
+}
+
+.hl-string {
+  color: #2A00FF;
+}
+
+.hl-doctype {
+  color: #3F5F5F;
+  font-style: italic;
+}
+
+.hl-directive {
+  color: #7F0055;
+  font-weight: bold; 
+}

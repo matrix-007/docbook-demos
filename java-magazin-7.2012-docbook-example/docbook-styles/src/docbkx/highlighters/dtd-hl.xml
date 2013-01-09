@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Syntax highlighting definition for DTD
+
+xslthl - XSLT Syntax Highlighting
+Copyright (C) 2011 Nico Alpert
+
+-->
+<highlighters>
+	<highlighter type="multiline-comment">
+		<start>&lt;!--</start>
+		<end>--&gt;</end>
+		<style>doccomment</style>
+	</highlighter>
+	<highlighter type="oneline-comment">//</highlighter>
+	<highlighter type="string">
+		<string>'</string>
+		<escape>\</escape>
+		<spanNewLines />
+	</highlighter>
+	<highlighter type="keywords">
+		<keyword>CDATA</keyword>
+		<keyword>ID</keyword>
+		<keyword>IDREF</keyword>
+		<keyword>IDREFS</keyword>
+		<keyword>NMTOKEN</keyword>
+		<keyword>NMTOKENS</keyword>
+		<keyword>ENTITY</keyword>
+		<keyword>ENTITIES</keyword>
+		<keyword>NOTATION</keyword>
+		<keyword>xml:</keyword>
+		<keyword>EMPTY</keyword>
+		<ignoreCase />
+		<style>keyword</style>	
+	</highlighter>
+	<highlighter type="word">
+		<!-- highlight the dtd open and close tags as directives -->
+		<word>&gt;</word>
+		<word>&lt;!ATTLIST</word>
+		<word>&lt;!ELEMENT</word>
+		<style>tag</style>
+	</highlighter>
+</highlighters>

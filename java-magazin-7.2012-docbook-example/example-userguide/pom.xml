@@ -7,30 +7,20 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>Beispiel Benutzerhandbuch</name>
-	<url>http://www.conceptpeople.de</url>
-	<description>Dies ist ein Beispielprojekt für ein DocBook-Handbuch (example-userguide.xml).</description>
 
 	<properties>
-		<!-- Arbeitsverzeichnis des Docbkx-Plugins definieren -->
-		<workDirectory>${basedir}/target/work/docbkx</workDirectory>
 
-		<!-- Versionen der DocBook-Komponenten -->
+		<workDirectory>${basedir}/target/work/docbkx</workDirectory>
 		<docbook-styles.version>1.1.0-SNAPSHOT</docbook-styles.version>
 		<docbkx-maven-plugin.version>2.0.13</docbkx-maven-plugin.version>
 		<docbook.version>5.0-all</docbook.version>
 		<fop-hyph.version>1.2</fop-hyph.version>
-
 		<maven-assembly-plugin.version>2.2.1</maven-assembly-plugin.version>
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<!--
-					DocBook Styles, Bilder und Assembly ins Arbeitsverzeichnis
-					entpacken
-				-->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -41,7 +31,7 @@
 							<goal>unpack</goal>
 						</goals>
 						<configuration>
-							<includes>styles/**,images/**,assembly/**</includes>
+							<includes>xsl/**,images/**,css/**,highlighters/**,fonts/**,assembly/**</includes>
 							<artifactItems>
 								<artifactItem>
 									<groupId>de.conceptpeople.docbook</groupId>
@@ -88,7 +78,7 @@
 							<!-- PDF und HTML Ausgabe erzeugen-->
 							<goal>generate-pdf</goal>
 							<goal>generate-html</goal>
-							<goal>generate-webhelp</goal>
+							<!-- <goal>generate-webhelp</goal> -->
 						</goals>
 						<configuration>
 							<!-- DocBook-Dokument angeben -->
@@ -99,26 +89,19 @@
 								<copy todir="${workDirectory}">
 									<fileset dir="${basedir}/src/docbkx" />
 								</copy>
-
-								<!-- Kopiert Bilder fuer die HTML-Version -->
 								<copy todir="${basedir}/target/docbkx/html/images">
 									<fileset dir="${workDirectory}/images">
 										<exclude name="**/*.pdf" />
 									</fileset>
 								</copy>
-								<!--
-									Kopiert Bilder fuer die Webhelp-Version. Muss angepasst werden,
-									wenn sich der Name des DocBook-Dokuments ändert.
-								-->
 								<copy
 									todir="${basedir}/target/docbkx/webhelp/docbook_maven/content/images">
 									<fileset dir="${workDirectory}/images">
 										<exclude name="**/*.pdf" />
 									</fileset>
 								</copy>
-								<!-- Kopiert CSS-Styles fuer die HTML-Version -->
-								<copy todir="${basedir}/target/docbkx/html/styles">
-									<fileset dir="${workDirectory}/styles">
+								<copy todir="${basedir}/target/docbkx/html/css">
+									<fileset dir="${workDirectory}/css">
 										<include name="*.css" />
 									</fileset>
 								</copy>
@@ -143,153 +126,21 @@
 						</parameter>
 					</customizationParameters>
 
-					<!-- Setzt die Dokumentensprache auf Deutsch -->
-					<l10nGentextLanguage>de</l10nGentextLanguage>
-
-					<!-- Eigene Sprachdefinitionen fuer Syntax highlighting laden-->
-					<highlightXslthlConfig>${workDirectory}/styles/highlighters/xslthl-config.xml</highlightXslthlConfig>
-
-					<!-- Allgemeine Schriftart angeben -->
-					<bodyFontFamily>Times New Roman</bodyFontFamily>
-
-
-					<!-- Eigene Fonts einbinden -->
-					<fonts>
-						<!-- chinese font -->
-						<font>
-							<name>Microsoft YaHei</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/msyh/msyh.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/msyh/msyh.xml</metricsFile>
-						</font>
-						<font>
-							<name>Microsoft YaHei</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/styles/fonts/msyh/msyhbd.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/msyh/msyhbd.xml</metricsFile>
-						</font>
-						<font>
-							<name>SimSun</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/simsun/simsun.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/simsun/simsun.xml</metricsFile>
-						</font>
-						<font>
-							<name>SimSun</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/styles/fonts/simsun/simsunbd.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/simsun/simsunbd.xml</metricsFile>
-						</font>
-						<font>
-							<name>SimHei</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/simhei/simhei.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/simhei/simhei.xml</metricsFile>
-						</font>
 					
-						<!-- 仿宋 -->
-						<font>
-							<name>SimFang</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/simfang/simfang.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/simfang/simfang.xml</metricsFile>
-						</font>
-						<!-- 楷体 -->
-						<font>
-							<name>SimKai</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/simkai/simkai.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/simkai/simkai.xml</metricsFile>
-						</font>
-						<!-- english font -->
-						<font>
-							<name>Times New Roman</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/times/times.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/times/times.xml</metricsFile>
-						</font>
-						<font>
-							<name>Times New Roman</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/styles/fonts/simhei/timesbd.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/simhei/timesbd.xml</metricsFile>
-						</font>
-						<font>
-							<name>Times New Roman</name>
-							<style>italic</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/times/timesi.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/times/timesi.xml</metricsFile>
-						</font>
-						<font>
-							<name>Times New Roman</name>
-							<style>italic</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/styles/fonts/times/timesbi.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/times/timesbi.xml</metricsFile>
-						</font>
-						<font>
-							<name>Calibri</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/Calibri/calibri.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/Calibri/calibri.xml</metricsFile>
-						</font>
-						<font>
-							<name>Calibri</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/styles/fonts/Calibri/calibrib.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/Calibri/calibrib.xml</metricsFile>
-						</font>
-						<font>
-							<name>Calibri</name>
-							<style>italic</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/Calibri/calibrii.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/Calibri/calibrii.xml</metricsFile>
-						</font>
+					<l10nGentextLanguage>zh</l10nGentextLanguage>
 
-						<font>
-							<name>Courier New</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/Courier/cour.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/Courier/courier.xml</metricsFile>
-						</font>
-						<font>
-							<name>Courier New</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/styles/fonts/Courier/courbd.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/Courier/courier-bold.xml</metricsFile>
-						</font>
-						<font>
-							<name>Courier New</name>
-							<style>italic</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/styles/fonts/Courier/couri.ttf</embedFile>
-							<metricsFile>${workDirectory}/styles/fonts/Courier/courier-italic.xml</metricsFile>
-						</font>
-					</fonts>
+					
+					<highlightXslthlConfig>${workDirectory}/highlighters/xslthl-config.xml</highlightXslthlConfig>
+					<externalFOPConfiguration>${workDirectory}/fonts/fop-conf.xml</externalFOPConfiguration>
+					
+					<imgSrcPath>urn:docbkx:stylesheet/images</imgSrcPath>
 
 					<!-- Eigene Styles fuer PDF -->
-					<foCustomization>${workDirectory}/styles/docbook-pdf.xsl</foCustomization>
+					<foCustomization>${workDirectory}/xsl/docbook-pdf.xsl</foCustomization>
 					<!-- Eigene Styles fuer HTML -->
-					<htmlCustomization>${workDirectory}/styles/docbook-html.xsl</htmlCustomization>
+					<htmlCustomization>${workDirectory}/xsl/docbook-html.xsl</htmlCustomization>
 
-					<!--
-						Erlaubt Strukturierung einer XML-Datei ueber xi:include href="..."
-					-->
+
 					<xincludeSupported>true</xincludeSupported>
 				</configuration>
 			</plugin>
