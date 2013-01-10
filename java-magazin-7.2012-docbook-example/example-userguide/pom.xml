@@ -87,7 +87,7 @@
 							<!-- PDF und HTML Ausgabe erzeugen -->
 							<goal>generate-pdf</goal>
 							<goal>generate-html</goal>
-							<!-- <goal>generate-webhelp</goal> -->
+							<goal>generate-webhelp</goal>
 						</goals>
 						<configuration>
 							<!-- DocBook-Dokument angeben -->
@@ -123,7 +123,7 @@
 					<sourceDirectory>${workDirectory}</sourceDirectory>
 					<imgSrcPath>${workDirectory}/</imgSrcPath>
 					<keepRelativeImageUris>1</keepRelativeImageUris>
-					
+
 					<!-- Zusaetzliche XSLT Parameter -->
 					<customizationParameters>
 						<parameter>
@@ -147,74 +147,25 @@
 							<metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
 						</font>
 						<font>
-							<name>ArialBlack</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/Arial/ArialBlack.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/ArialBlack-metrics.xml</metricsFile>
-						</font>
-						<font>
 							<name>Arial</name>
 							<style>normal</style>
 							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/Arial/ArialBold.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/ArialBold-metrics.xml</metricsFile>
+							<embedFile>${workDirectory}/fonts/Arial/Arial_Bold.ttf</embedFile>
+							<metricsFile>${workDirectory}/fonts/Arial/Arial_Bold-metrics.xml</metricsFile>
 						</font>
 						<font>
 							<name>Arial</name>
 							<style>italic</style>
 							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/Arial/ArialBoldItalic.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/ArialBoldItalic-metrics.xml</metricsFile>
+							<embedFile>${workDirectory}/fonts/Arial/Arial_Bold_Italic.ttf</embedFile>
+							<metricsFile>${workDirectory}/fonts/Arial/Arial_Bold_Italic-metrics.xml</metricsFile>
 						</font>
 						<font>
-							<name>Calibri</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/Calibri/calibri.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Calibri/calibri-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>Calibri</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/Calibri/calibrib.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Calibri/calibrib-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>Calibri</name>
+							<name>Arial</name>
 							<style>italic</style>
 							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/Calibri/calibrii.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Calibri/calibrii-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>Calibri</name>
-							<style>italic</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/Calibri/calibriz.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Calibri/calibriz-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>CourierNew</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/CourierNew/cour.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/CourierNew/cour-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>CourierNew</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/CourierNew/courbd.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/CourierNew/courbd-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>CourierNew</name>
-							<style>italic</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/CourierNew/couri.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/CourierNew/couri-metrics.xml</metricsFile>
+							<embedFile>${workDirectory}/fonts/Arial/Arial_Italic.ttf</embedFile>
+							<metricsFile>${workDirectory}/fonts/Arial/Arial_Italic-metrics.xml</metricsFile>
 						</font>
 						<font>
 							<name>DroidSans</name>
@@ -273,81 +224,11 @@
 							<metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Regular-metrics.xml</metricsFile>
 						</font>
 						<font>
-							<name>FangSong</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/FangSong/simfang.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/FangSong/simfang-metrics.xml</metricsFile>
-						</font>
-						<font>
 							<name>KaiTi</name>
 							<style>normal</style>
 							<weight>normal</weight>
 							<embedFile>${workDirectory}/fonts/KaiTi/simkai.ttf</embedFile>
 							<metricsFile>${workDirectory}/fonts/KaiTi/simkai-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>MicrosoftYaHei</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/MicrosoftYaHei/msyh.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/MicrosoftYaHei/msyh-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>MicrosoftYaHei</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/MicrosoftYaHei/msyhbd.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/MicrosoftYaHei/msyhbd-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>STXingkai</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/STXingkai/STXINGKA.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/STXingkai/STXINGKA-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SegoePrint</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/SegoePrint/segoepr.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SegoePrint/segoepr-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SegoePrint</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/SegoePrint/segoeprb.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SegoePrint/segoeprb-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SegoeScript</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/SegoeScript/segoesc.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SegoeScript/segoesc-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SegoeScript</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/SegoeScript/segoescb.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SegoeScript/segoescb-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SimHei</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/SimHei/simhei.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SimHei/simhei-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>NSimSun</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/SimSun/NSimSun-Regular.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SimSun/NSimSun-Regular-metrics.xml</metricsFile>
 						</font>
 						<font>
 							<name>SimSun</name>
@@ -357,32 +238,11 @@
 							<metricsFile>${workDirectory}/fonts/SimSun/SimSun-Bold-metrics.xml</metricsFile>
 						</font>
 						<font>
-							<name>SimSun-PUA</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/SimSun/SimSun-PUA-Regular.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SimSun/SimSun-PUA-Regular-metrics.xml</metricsFile>
-						</font>
-						<font>
 							<name>SimSun</name>
 							<style>normal</style>
 							<weight>normal</weight>
 							<embedFile>${workDirectory}/fonts/SimSun/SimSun-Regular.ttf</embedFile>
 							<metricsFile>${workDirectory}/fonts/SimSun/SimSun-Regular-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SimplifiedArabic</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/SimplifiedArabic/simpbdo.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SimplifiedArabic/simpbdo-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>SimplifiedArabic</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/SimplifiedArabic/simpo.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/SimplifiedArabic/simpo-metrics.xml</metricsFile>
 						</font>
 						<font>
 							<name>TimesNewRoman</name>

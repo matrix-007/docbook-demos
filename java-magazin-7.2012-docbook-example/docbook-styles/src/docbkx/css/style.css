@@ -260,8 +260,8 @@ td code {
 
 div.note {
 	padding: 5px;
-	border: 1px solid black;
-	background-color: #cdddeb;
+	/**border: 1px solid black;**/
+	/**background-color: #cdddeb;**/
 }
 
 div.tip {

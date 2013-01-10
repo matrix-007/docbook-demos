@@ -1,9 +1,93 @@
 <font>
-  <name>NSimSun</name>
+  <name>Arial</name>
   <style>normal</style>
   <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/SimSun/NSimSun-Regular.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/SimSun/NSimSun-Regular-metrics.xml</metricsFile>
+  <embedFile>${workDirectory}/fonts/Arial/Arial.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/Arial/Arial_Bold.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/Arial_Bold-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>italic</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/Arial/Arial_Bold_Italic.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/Arial_Bold_Italic-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>italic</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/Arial_Italic.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/Arial_Italic-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSans</name>
+  <style>normal</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/DroidSans/DroidSans-Bold.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSans/DroidSans-Bold-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSans</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/DroidSans/DroidSans.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSans/DroidSans-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSansFallback</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/DroidSansFallback/DroidSansFallback.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSansFallback/DroidSansFallback-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSansMono</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/DroidSansMono/DroidSansMono.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSansMono/DroidSansMono-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSerif</name>
+  <style>normal</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Bold.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Bold-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSerif</name>
+  <style>italic</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-BoldItalic.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-BoldItalic-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSerif</name>
+  <style>italic</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Italic.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Italic-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>DroidSerif</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Regular.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Regular-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>KaiTi</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/KaiTi/simkai.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/KaiTi/simkai-metrics.xml</metricsFile>
 </font>
 <font>
   <name>SimSun</name>
@@ -13,13 +97,6 @@
   <metricsFile>${workDirectory}/fonts/SimSun/SimSun-Bold-metrics.xml</metricsFile>
 </font>
 <font>
-  <name>SimSun-PUA</name>
-  <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/SimSun/SimSun-PUA-Regular.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/SimSun/SimSun-PUA-Regular-metrics.xml</metricsFile>
-</font>
-<font>
   <name>SimSun</name>
   <style>normal</style>
   <weight>normal</weight>
@@ -27,58 +104,30 @@
   <metricsFile>${workDirectory}/fonts/SimSun/SimSun-Regular-metrics.xml</metricsFile>
 </font>
 <font>
-  <name>Arial</name>
+  <name>TimesNewRoman</name>
   <style>normal</style>
   <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/Arial.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
+  <embedFile>${workDirectory}/fonts/TimesNewRoman/times.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/TimesNewRoman/times-metrics.xml</metricsFile>
 </font>
 <font>
-  <name>Arial</name>
+  <name>TimesNewRoman</name>
   <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/ArialBlack.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/ArialBlack-metrics.xml</metricsFile>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/TimesNewRoman/timesbd.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/TimesNewRoman/timesbd-metrics.xml</metricsFile>
 </font>
 <font>
-  <name>Arial</name>
-  <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/ArialBold.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/ArialBold-metrics.xml</metricsFile>
+  <name>TimesNewRoman</name>
+  <style>italic</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/TimesNewRoman/timesbi.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/TimesNewRoman/timesbi-metrics.xml</metricsFile>
 </font>
 <font>
-  <name>Arial</name>
-  <style>normal</style>
+  <name>TimesNewRoman</name>
+  <style>italic</style>
   <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/ArialBoldItalic.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/ArialBoldItalic-metrics.xml</metricsFile>
-</font>
-<font>
-  <name>Arial</name>
-  <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/Arial.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
-</font>
-<font>
-  <name>Arial</name>
-  <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/ArialBlack.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/ArialBlack-metrics.xml</metricsFile>
-</font>
-<font>
-  <name>Arial</name>
-  <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/ArialBold.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/ArialBold-metrics.xml</metricsFile>
-</font>
-<font>
-  <name>Arial</name>
-  <style>normal</style>
-  <weight>normal</weight>
-  <embedFile>${workDirectory}/fonts/Arial/ArialBoldItalic.ttf</embedFile>
-  <metricsFile>${workDirectory}/fonts/Arial/ArialBoldItalic-metrics.xml</metricsFile>
+  <embedFile>${workDirectory}/fonts/TimesNewRoman/timesi.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/TimesNewRoman/timesi-metrics.xml</metricsFile>
 </font>
