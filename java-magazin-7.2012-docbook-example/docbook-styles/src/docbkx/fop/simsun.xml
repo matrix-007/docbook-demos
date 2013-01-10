@@ -1,0 +1,14 @@
+<font>
+  <name></name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts//</embedFile>
+  <metricsFile>${workDirectory}/fonts//-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>SimSun</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/SimSun/simsun.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/SimSun/simsun-metrics.xml</metricsFile>
+</font>

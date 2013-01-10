@@ -1,0 +1,9 @@
+<figure>
+    <title>硕大的图片</title>
+    <mediaobject>
+        <imageobject>
+            <imagedata  contentdepth="100%" width="100%" scalefit="1"
+                fileref="resources/images/lena_std.png"/>
+        </imageobject>
+    </mediaobject>
+</figure>

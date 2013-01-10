@@ -23,7 +23,7 @@
 
 	<!-- CSS-Datei angeben -->
 	<xsl:param name="html.stylesheet">
-		css/html.css
+		css/style.css
 	</xsl:param>
 
 	<xsl:param name="chunk.section.depth" select="3" />

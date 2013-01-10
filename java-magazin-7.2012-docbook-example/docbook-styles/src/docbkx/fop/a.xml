@@ -1,0 +1,84 @@
+<font>
+  <name>NSimSun</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/SimSun/NSimSun-Regular.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/SimSun/NSimSun-Regular-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>SimSun</name>
+  <style>normal</style>
+  <weight>bold</weight>
+  <embedFile>${workDirectory}/fonts/SimSun/SimSun-Bold.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/SimSun/SimSun-Bold-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>SimSun-PUA</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/SimSun/SimSun-PUA-Regular.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/SimSun/SimSun-PUA-Regular-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>SimSun</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/SimSun/SimSun-Regular.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/SimSun/SimSun-Regular-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/Arial.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/ArialBlack.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/ArialBlack-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/ArialBold.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/ArialBold-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/ArialBoldItalic.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/ArialBoldItalic-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/Arial.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/ArialBlack.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/ArialBlack-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/ArialBold.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/ArialBold-metrics.xml</metricsFile>
+</font>
+<font>
+  <name>Arial</name>
+  <style>normal</style>
+  <weight>normal</weight>
+  <embedFile>${workDirectory}/fonts/Arial/ArialBoldItalic.ttf</embedFile>
+  <metricsFile>${workDirectory}/fonts/Arial/ArialBoldItalic-metrics.xml</metricsFile>
+</font>

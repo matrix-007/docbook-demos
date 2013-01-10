@@ -26,9 +26,8 @@
 	<!-- External Parameter -->
 
 	<xsl:param name="projectversion"></xsl:param>
-	<xsl:param name="imageicon">
-		url(images/dbx/cpc_logo.gif)
-	</xsl:param>
+	<xsl:param name="imageicon" select="'url(images/dbx/cpc_logo.gif)'"/>
+	
 
 	<!-- *********** Templates *********************** ********************************************* -->
 

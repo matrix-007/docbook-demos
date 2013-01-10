@@ -27,9 +27,17 @@ foreachd(){
 			    #			<metricsFile>${workDirectory}/styles/fonts/Courier/courier.xml</metricsFile>
 				#		</font>
                 #
-                echo "<font>" >> a
-          
-                echo "</font>" >> a
+                tmp=${file%/*}
+                filename=${file##*/}
+                tmp=${tmp##*/}
+                echo "<font>" >> a.xml
+                echo "  <name>${tmp}</name>" >> a.xml
+                echo "  <style>normal</style>" >> a.xml
+                echo "  <weight>normal</weight>" >> a.xml
+                echo "  <embedFile>"'${workDirectory}/fonts/'"$tmp/${filename}</embedFile>" >> a.xml
+                filename=${filename%.*}
+                echo "  <metricsFile>"'${workDirectory}/fonts/'"$tmp/${filename}-metrics.xml</metricsFile>" >> a.xml
+                echo "</font>" >> a.xml
             fi
             if [ $prefix = "xml" ]
             then
