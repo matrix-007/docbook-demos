@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="zh">
+  <info>
+    <title> Apache FOP Fonts</title>
+    <author>
+      <personname>piaolingxue</personname>
+      <email>piaolingxue305@gmail.com</email>
+    </author>
+  </info>
+  
+  <sect1>
+    <title>简述</title>
+    <para>以下表格简述了不同Apache FOP渲染器对字体的兼容性.</para>
+    <informaltable>
+      <tgroup cols="5">
+	<thead>
+	  <row>
+	    <entry>Render</entry>
+	    <entry>Base-14</entry>
+	    <entry>AWT/OS</entry>
+	    <entry>Custom</entry>
+	    <entry>Custom Embedding</entry>
+	  </row>
+	</thead>
+	
+	<tbody>
+	  <row>
+	    <entry>PDF</entry>
+	    <entry>yes</entry>
+	    <entry>no</entry>
+	    <entry>yes</entry>
+	    <entry>yes</entry>
+	  </row>
+	  <row>
+	    <entry>Postscript</entry>
+	    <entry>yes</entry>
+	    <entry>no</entry>
+	    <entry>yes</entry>
+	    <entry>yes</entry>
+	  </row>
+	  <row>
+	    <entry>PCL</entry>
+	    <entry>yes(modified)</entry>
+	    <entry>yes(printed as bitmaps)</entry>
+	    <entry>yes(printed as bitmaps)</entry>
+	    <entry>no</entry>
+	  </row>
+	  <row>
+	    <entry>RTF</entry>
+	    <entry>n/a(fonts metrics not need)</entry>
+	    <entry>n/a</entry>
+	    <entry>n/a</entry>
+	    <entry>n/a</entry>
+	  </row>     
+	  <row>
+	    <entry>XML</entry>
+	    <entry>yes</entry>
+	    <entry>no</entry>
+	    <entry>yes</entry>
+	    <entry>n/a</entry>
+	  </row>     
+	</tbody>
+      </tgroup>
+    </informaltable>
+  </sect1>
+  <sect1>
+    <title>Base-14 字体</title>
+    <para>Adobe PostScript和PDF规范定义了一系列的14字体必须对每种PostScript解释器和PDF渲染器可见：Helvetica(normal, bold, italic, bold italic), Times(normal, bold, italic, bold italic), Courier(normal, bold, italic, bold italic), Symbol and ZapfDingbats.</para>
+    <para>以下字体集作为Base-14字体集硬编码到FOP中:</para>
+    <informaltable>
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Base-14 Font</entry>
+	    <entry>Font Family</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry>Helvetica</entry>
+	    <entry>Helvetica, sans-serif, SansSerif</entry>	    
+	  </row>
+	   <row>
+	    <entry>Times</entry>
+	    <entry>Times, Times Roman, Times-Roman, serif, any</entry>	    
+	  </row>
+	   <row>
+	    <entry>Courier</entry>
+	    <entry>Courier, monospace, Monospaced</entry>	    
+	  </row>
+	  <row>
+	    <entry>Symbol</entry>
+	    <entry>Symbol</entry>
+	  </row>
+	  <row>
+	    <entry>ZapfDingbats</entry>
+	    <entry>ZapfDingbats</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </informaltable>
+    <note><para>最新版本的Adobe Acrobat Reader在内部将"<literal>Helvetica</literal>"替换为"<literal>Arial</literal>",  将"<literal>Times</literal>"替换为"<literal>Times New Roman</literal>". Ghost PostScript将"<literal>Helvetica</literal>"替换为"<literal>Nimbus Sans L</literal>", 将"<literal>Times</literal>"替换为"<literal>Nimbus Roman No9 L</literal>". 其他文档也可能作类似的替换操作. 如果你不想做这样的替换操作，你需要明确指定字体并将该字体嵌入文档.</para></note>
+  </sect1>
+  <bibliography>
+    <title>参考资料</title>
+    <biblioentry xml:id="BI_001">
+      <title>Apache FOP(tm): Fonts</title>
+      <author>
+	<personname>apache</personname>
+      </author>
+      <bibliosource class="uri">
+	<link xlink:href="http://xmlgraphics.apache.org/fop/1.0/fonts.html#font-list">http://xmlgraphics.apache.org/fop/1.0/fonts.html#font-list</link>
+      </bibliosource>
+    </biblioentry>
+  </bibliography>
+</article>

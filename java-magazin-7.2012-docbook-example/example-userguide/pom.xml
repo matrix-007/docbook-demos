@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -140,48 +141,6 @@
 
 					<fonts>
 						<font>
-							<name>Arial</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/Arial/Arial.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/Arial-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>Arial</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/Arial/Arial_Bold.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/Arial_Bold-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>Arial</name>
-							<style>italic</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/Arial/Arial_Bold_Italic.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/Arial_Bold_Italic-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>Arial</name>
-							<style>italic</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/Arial/Arial_Italic.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/Arial/Arial_Italic-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>DroidSans</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/DroidSans/DroidSans-Bold.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/DroidSans/DroidSans-Bold-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>DroidSans</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/DroidSans/DroidSans.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/DroidSans/DroidSans-metrics.xml</metricsFile>
-						</font>
-						<font>
 							<name>DroidSansFallback</name>
 							<style>normal</style>
 							<weight>normal</weight>
@@ -196,39 +155,11 @@
 							<metricsFile>${workDirectory}/fonts/DroidSansMono/DroidSansMono-metrics.xml</metricsFile>
 						</font>
 						<font>
-							<name>DroidSerif</name>
-							<style>normal</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Bold.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Bold-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>DroidSerif</name>
-							<style>italic</style>
-							<weight>bold</weight>
-							<embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-BoldItalic.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-BoldItalic-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>DroidSerif</name>
-							<style>italic</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Italic.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Italic-metrics.xml</metricsFile>
-						</font>
-						<font>
-							<name>DroidSerif</name>
-							<style>normal</style>
-							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Regular.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/DroidSerif/DroidSerif-Regular-metrics.xml</metricsFile>
-						</font>
-						<font>
 							<name>KaiTi</name>
 							<style>normal</style>
 							<weight>normal</weight>
-							<embedFile>${workDirectory}/fonts/KaiTi/simkai.ttf</embedFile>
-							<metricsFile>${workDirectory}/fonts/KaiTi/simkai-metrics.xml</metricsFile>
+							<embedFile>${workDirectory}/fonts/KaiTi/kaiti.ttf</embedFile>
+							<metricsFile>${workDirectory}/fonts/KaiTi/kaiti-metrics.xml</metricsFile>
 						</font>
 						<font>
 							<name>SimSun</name>
@@ -272,6 +203,7 @@
 							<embedFile>${workDirectory}/fonts/TimesNewRoman/timesi.ttf</embedFile>
 							<metricsFile>${workDirectory}/fonts/TimesNewRoman/timesi-metrics.xml</metricsFile>
 						</font>
+
 					</fonts>
 
 					<highlightXslthlConfig>${workDirectory}/highlighters/xslthl-config.xml</highlightXslthlConfig>
@@ -308,4 +240,5 @@
 	</build>
 
 </project>
-
+	
+	
