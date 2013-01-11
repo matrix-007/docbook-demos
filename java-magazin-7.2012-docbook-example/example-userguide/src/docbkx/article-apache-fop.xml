@@ -67,7 +67,7 @@
   </sect1>
   <sect1>
     <title>Base-14 字体</title>
-    <para>Adobe PostScript和PDF规范定义了一系列的14字体必须对每种PostScript解释器和PDF渲染器可见：Helvetica(normal, bold, italic, bold italic), Times(normal, bold, italic, bold italic), Courier(normal, bold, italic, bold italic), Symbol and ZapfDingbats.</para>
+    <para>AdobePostScript和PDF规范定义了一系列的14字体必须对每种PostScript解释器和PDF渲染器可见：Helvetica(normal, bold, italic, bold italic), Times(normal, bold, italic, bold italic), Courier(normal, bold, italic, bold italic), Symbol and ZapfDingbats.</para>
     <para>以下字体集作为Base-14字体集硬编码到FOP中:</para>
     <informaltable>
       <tgroup cols="2">

@@ -29,6 +29,9 @@
 
   <!-- Paper format -->
   <xsl:param name="paper.type" select="'A4'"	/>
+
+  <!-- Body font size -->
+  <xsl:param name="body.font.master" select="10" />
   
   <!-- text indent -->
   <xsl:param name="body.start.indent" select="'0pt'"/>
@@ -69,8 +72,8 @@
   <xsl:param name="draft.mode" select="'no'"/>
   
   <xsl:attribute-set name="admonition.properties">
-    <xsl:attribute name="font-family">'Helvetica','KaiTi'</xsl:attribute>
-    <xsl:attribute name="font-size">90%</xsl:attribute>
+    <xsl:attribute name="font-family">'TimesNewRoman','KaiTi'</xsl:attribute>
+    <xsl:attribute name="font-size">80%</xsl:attribute>
     <xsl:attribute name="border-left-style">solid</xsl:attribute>
     <xsl:attribute name="border-left-color">black</xsl:attribute>
     <xsl:attribute name="border-left-width">1pt</xsl:attribute>
