@@ -3,7 +3,7 @@
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="zh">
   <info>
-    <title> Apache FOP Fonts</title>
+    <title> Apache FOP Fonts (译)</title>
     <author>
       <personname>piaolingxue</personname>
       <email>piaolingxue305@gmail.com</email>
@@ -102,6 +102,93 @@
       </tgroup>
     </informaltable>
     <note><para>最新版本的Adobe Acrobat Reader在内部将"<literal>Helvetica</literal>"替换为"<literal>Arial</literal>",  将"<literal>Times</literal>"替换为"<literal>Times New Roman</literal>". Ghost PostScript将"<literal>Helvetica</literal>"替换为"<literal>Nimbus Sans L</literal>", 将"<literal>Times</literal>"替换为"<literal>Nimbus Roman No9 L</literal>". 其他文档也可能作类似的替换操作. 如果你不想做这样的替换操作，你需要明确指定字体并将该字体嵌入文档.</para></note>
+  </sect1>
+  <sect1>
+    <title>缺少字体</title>
+    <para>当FOP在处理时发现没有特定字体时(可能系统没有安装或者FOP没有配置), 字体被替换成<literal>any</literal>, <literal>any</literal>在内部会被替换成Base-14字体<literal>Times</literal>.</para>
+  </sect1>
+  <sect1>
+    <title>丢失字形(Glyphs)</title>
+    <para>每个字体都包含一个特定的字行集. 如果对于一个给定的字符没有找到相应的字形, FOP会给出警告信息并用"#"替代该字符. 在这步操作之前, FOP会先查询一个已注册的字形替换组(当前是硬编码实现), 以提供在某些情况下可选择的字形的替换操作, 但是并不保证结果如你所望. 最好的方式还是选择一种包含该字形的字体, 字形替换是您最后的选择.</para>
+  </sect1>
+  <sect1>
+    <title>自定义字体</title>
+    <para>根据输出格式高度支持自定义字体, 这一部分显示了如果添加Type1和TrueType字体到PDF,PostScript和Java2D-based渲染器. 其他的渲染器像AFP支持别的字体格式. 更详细的介绍可以在<link xlink:href="http://xmlgraphics.apache.org/fop/1.1/output.html">输出格式</link>页面找到.</para>
+    <para>在早期的FOP版本里, 如果你想加入一个自定义的字体, 你必须先创建一个该字体规格文件(font metrics file). 该步骤非常不方便已经被移除另外FOP支持自动注册字体, 例如, FOP可以扫描你系统中安装的所有字体或扫描用户定义的字体目录. 但在某些特定场合下,通过xml字体规格文件注册字体仍被支持.</para>
+  </sect1>
+  <sect1>
+    <title>批量字体配置</title>
+    <para>如果你想要FOP使用自定义字体, 你需要告诉它从哪去找寻这些字体. 该步骤在配置文件中完成并因各渲染器各异. 为了方便, FOP允许批量定义字体, 你可以告诉FOP去扫描你的系统字体目录或者指定目录来搜索指定字体. 这些字体将会被自动注册.<programlisting language="xml"><![CDATA[<renderers>
+  <renderer mime="application/pdf">
+     <fonts>
+        <!-- register all the fonts found in a directory -->
+        <directory>C:\MyFonts1</directory>
+
+        <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
+        <directory recursive="true">C:\MyFonts2</directory>
+
+        <!-- automatically detect operating system installed fonts -->
+        <auto-detect/>
+     </fonts>
+  </renderer>
+</renderers>]]></programlisting></para>
+    <sect2>
+      <title>通过FOP注册字体</title>
+      <para>你必须告诉FOP如何找到和使用字体文件通过在FOP配置中注册他们.根据字形添加一条字体配置,就像下面这样:</para>
+      <programlisting language="xml"><![CDATA[<renderers>
+   <renderer mime="application/pdf">
+       <fonts>
+           <!-- register a particular font -->
+           <font kerning="yes"
+                 embed-url="file:///C:/myfonts/FTL_____.pfb"
+                 encoding-mode="single-byte">
+               <font-triplet name="FrutigerLight" style="normal" weight="normal"/>
+           </font>
+       </fonts>
+   </renderer>
+</renderers>]]></programlisting>
+      <itemizedlist>
+	<listitem>
+	  <para>URLs用来指定字体规格和字体文件路径, 相对URLs根据设定的基准目录解析.</para>
+	</listitem>
+      </itemizedlist>
+    </sect2>
+    <sect2>
+      <title>TrueType字体集</title>
+      <para></para>
+    </sect2>
+    <sect2>
+      <title>自动探测和自动嵌入特性</title>
+      <para></para>
+    </sect2>
+    <sect2>
+      <title>字体缓存</title>
+      <para></para>
+    </sect2>
+    <sect2>
+      <title>Type1字体规格</title>
+      <para></para>
+    </sect2>
+    <sect2>
+      <title>TrueType字体规格</title>
+      <para></para>
+    </sect2>
+    <sect2>
+      <title>嵌入</title>
+      <para></para>
+    </sect2>
+    <sect2>
+      <title>替换</title>
+      <para></para>
+    </sect2>
+  </sect1>
+  <sect1>
+    <title>字体选择策略</title>
+    <para></para>
+  </sect1>
+  <sect1>
+    <title>字体列表命令行工具</title>
+    <para></para>
   </sect1>
   <bibliography>
     <title>参考资料</title>
