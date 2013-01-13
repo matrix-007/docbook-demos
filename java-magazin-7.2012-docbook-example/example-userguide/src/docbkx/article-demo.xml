@@ -171,7 +171,7 @@ public class Test {
 				<title>硕大的图片</title>
 				<mediaobject>
 					<imageobject>
-						<imagedata  contentdepth="100%" width="100%" scalefit="1" fileref="images/draft.png"/>
+						<imagedata  contentdepth="100%" width="100%" scalefit="1" fileref="images/lena_std.png"/>
 					</imageobject>
 				</mediaobject>
 			</figure>

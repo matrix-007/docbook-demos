@@ -151,19 +151,37 @@
 	<listitem>
 	  <para>URLs用来指定字体规格和字体文件路径, 相对URLs根据设定的基准目录解析.</para>
 	</listitem>
+	<listitem>
+	  <para>merics-url属性一般不是比选的, 除非你运行字体遇到什么问题.</para>
+	</listitem>
+	<listitem>
+	  <para>字体的kernel属性是可选的, 默认为true.</para>
+	</listitem>
       </itemizedlist>
     </sect2>
     <sect2>
       <title>TrueType字体集</title>
-      <para></para>
+      <para>TrueType集包含一个以上的字体(*.ttc), 为这些字体创建规格描述文件, 您必须在用TTFReader的时候通过<literal>-ttcname</literal>指定具体的字体名. </para>
+      <para>要想获得字体集中的所有字体名称, 可以在运行TTFReader的时候不加<literal>-ttcname</literal>参数, 这样就会显示出所有的字体名称并抛出一个异常.</para>
+      <para>以下是一个例子, 为一个.ttc字体生成字体规格描述文件(font metrics file).<programlisting language="bourne">java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
+      org.apache.fop.fonts.apps.TTFReader -ttcname "MS Mincho"
+      msmincho.ttc msminch.xml</programlisting></para>
+      <para>另外, 你可以通过font标签的<literal>sub-font</literal>属性指定特定的字体, 这就意味着您不需要在为.ttc中的每个字体生成特定的字体规格描述文件.例如:<programlisting language="xml"><![CDATA[<font embed-url="gulim.ttc" sub-font="GulimChe">
+  <font-triplet name="GulimChe" style="normal" weight="normal"/>
+</font>]]></programlisting></para>
     </sect2>
     <sect2>
       <title>自动探测和自动嵌入特性</title>
-      <para></para>
+      <para>通过在fop配置中添加<literal>auto-detect</literal>标签, FOP会自动搜索您操作系统的默认字体目录.</para>
+      <para>如果某些字体在<literal>classpath</literal>上, 并且在<filename>MANIFEST.MF</filename>中被描述为<literal>application/x-font</literal>. 例如,您的jar中包含font/myfont.ttf:<screen>Manifest-Version: 1.0
+
+    Name: font/myfont.ttf
+    Content-Type: application/x-font</screen>这种特性允许您创建包含自定义字体的jar, 将这些jar放到<literal>classpath</literal>上, 就可以被fop检测到.</para>
     </sect2>
     <sect2>
-      <title>字体缓存</title>
-      <para></para>
+      <title>字体缓存(the font cache)</title>
+      <para>FOP通过维护一个字体缓存来加速自动检测过程. 该缓存文件通常放在用户根目录下的<filename>.fop</filename>文件夹内, 文件名是<filename>fop-fonts.cache</filename>. </para>
+      <para>当加载一个特定的字体出现问题时, FOP会在字体缓存中将该字体进行标记以示该字体将不再会被加载. 因此, 你发现某些字体存在但仍不能被FOP发现的时候, 应该尝试删除该字体缓存强制FOP重新扫描所有字体. </para>
     </sect2>
     <sect2>
       <title>Type1字体规格</title>

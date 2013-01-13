@@ -20,6 +20,11 @@
 	<xsl:param name="highlight.source" select="1" />
 	
 	<xsl:param name="profile.condition" select="'html-only'" />
+	
+	<!-- If non-zero, relative URIs (in, for example fileref attributes) will be used in the generated output. Otherwise, the URIs will be made absolute with respect to the base URI. -->
+	<xsl:param name="keep.relative.image.uris" select="1"/>
+
+	<xsl:param name="img.src.path" select="'./'" />
 
 	<!-- CSS-Datei angeben -->
 	<xsl:param name="html.stylesheet">
