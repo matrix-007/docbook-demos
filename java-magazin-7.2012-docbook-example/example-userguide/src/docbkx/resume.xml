@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<article version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:htm="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>淘宝电话面试总结</title>
+    <author>
+      <personname>李斌</personname>
+      <affiliation>
+	<orgname>Plx.Studio</orgname>
+	<address>
+	  <postcode>215009</postcode>,<street>JingDe Road</street>,<city>Suzhou</city>,<country>China</country>
+	  Phone:<phone>+86 13912601243</phone>,
+	  Web:<otheraddr><link xlink:href="http://github.com/piaolingxue">git repos</link>,<link xlink:href="http://code.google.com/p/piaolingxue305/downloads/list">google repos</link></otheraddr>
+	  Email:<email>piaolingxue305@gmail.com</email>
+	</address>
+      </affiliation>
+    </author>
+    
+    <pubdate>2013.1.21</pubdate>
+  </info>
+
+
+  <section version="5.0" xml:id="introduction">
+    <title>简介</title>
+
+    <para>11:12开始的电话面试，整个过程大概24分钟，略微紧张，更确切的说应该是激动（ps:毕竟是自己向往已久的公司,真的非常渴望加入）。之前也有过其他公司电话面试的经历，但感觉淘宝的面试更加具有针对性，在深度和广度上都有测重。整体感觉自己这次面试发挥不佳，主要原因是自己在技术的深度上挖掘的不够。</para>
+
+    <para>还有几个问题，因为项目做的太久，有些细节记的不太清除了，这也体现了<literal>review</literal>的重要性。</para>
+  </section>
+  
+  <section xml:id="questions">
+    <title>问题</title>
+    <para>以下针对自己这次电话面试模糊不清的问题，进行了一些总结。</para>
+    <section xml:id="q-1">
+      <title>Hadoop 原理(如何设计)</title>
+      <section xml:id="core">
+	<title>核心(map/reduce)</title>
+	<itemizedlist>
+	  <listitem>
+	    <para>map即映射,将输入的key/value对映射成一组中间格式键值对集<xref linkend="BI_001"/><xref linkend="BI_002"/>，Hadoop会为每一个InputSplit创建一个MapTask，Map的数量由输入数据量决定。</para>
+	  </listitem>
+	  <listitem>
+	    <para>reduce即归约，将map的输出根据key聚合。包括洗牌(shuffle),排序(sort),reduce几个过程,其中shuffle和sort同时进行，map的输出也是一边取回一边聚合的。</para>
+	  </listitem>
+	</itemizedlist>
+      </section>
+      <section xml:id="composition">
+	<title>组成</title>
+	<para>整个框架由JobTracker,TaskTracker,JobClient组成<xref linkend="BI_003"/></para>
+	<itemizedlist>
+	  <listitem>
+	    <para>JobTracker是一个master的服务，负责调度执行每一个子任务运行在TaskTracker，并监控它们，如果发现有失败的Task,则重新运行它们，一般情况下,JobTracker部署在单独的机器上。</para>
+	  </listitem>
+	  <listitem>
+	    <para>TaskTracker是运行在多台机器上的slave服务，TaskTracker负责执行每一个task，TaskTracker都需要运行在HDFS的datanode上。</para>
+	  </listitem>
+	  <listitem>
+	    <para>每个Job都需要在客户端通过JobClient向JobTracker提交程序和相应的配置，JobTracker负责创建每一个Task，将它们分发到各个TaskTracker机器上运行。</para>
+	  </listitem>
+	</itemizedlist>
+      </section>
+      <section xml:id="process">
+	<title>流程</title>
+	<para>每个Map/Reduce作业都是通过JobClient.runJob(conf)向master节点的JobTracker提交的，JobTracker接到JobClient的请求，将它加到作业队列中，JobTracker一直等待JobClient通过RPC向它提交作业，TaskTracker一直在通过RPC向JobTracker发送心跳检测(heartbeat)查询是否有任务可做，如果有，让其派发任务给它执行。如果JobTracker的作业队列不为空，则TaskTracker发送的心跳JobTracker就会发送一个任务给TaskTracker，这是一个<literal>pull</literal>的过程。slave的TaskTracker接到任务发起一个Task执行任务。</para>
+      </section>
+      <section xml:id="design">
+	<title>如何设计这样一个过程</title>
+	<para>除了基础框架外，我感觉重点在JobTracker跟TaskTracker之间的通信环节，如何通过引入心跳检测使TaskTracker得到任务执行，以及整个job执行过程JobTracker对TaskTraker运行任务的<literal>监控</literal>与<literal>调度</literal>.</para>
+      </section>
+    </section>
+    <section xml:id="q-2">
+      <title>Lucene打分机制,自己改写的部分</title>
+      <section xml:id="lucene_score">
+	<title>打分机制</title>
+	<para>lucene分数模型中主要包括<literal>tf</literal>、<literal>idf</literal>、评分因子<literal>(coord)</literal>、<literal>查询权重(queryNorm)</literal>、<literal>norm</literal>。</para>
+      </section>
+      <section xml:id="optimize">
+	<title>我改写的部分</title>
+	<para>在我所接触的标准产品名称聚类中，可能会出现查询结果文档中有部分文档包含所有的查询词，我想要结果文档叫短的排在前面，即查询词占文档总词量比较高的排在前面。这样的文档根据分数模型计算的tf,idf,coord值都一样，并且queryNorm对所有文档来讲肯定相同，此时我最关心的就是norm。而<literal>norm</literal>由字段加权(field boost)*((float)(1.0/sqrt(numTerms)))计算得到，field boost又一样，所以之用看(float)(1.0/(numTerms))这个值，通过阅读文档发现,lucene使用<literal>8位</literal>来表示这个值，也就是说会存在精度丢失情况。比如:</para>
+	<programlisting language="java">	public void test_lucene_lengthnorm() {
+		// default equal
+		byte a = SmallFloat.floatToByte315(((float)(1.0 / Math.sqrt(4.0))));
+		byte b = SmallFloat.floatToByte315(((float)(1.0 / Math.sqrt(3.0))));
+		assertEquals(a, b);
+		
+		// change to not equal
+		a = SmallFloat.floatToByte315(((float)(1.0 / (4.0 * 4.0))));
+		b = SmallFloat.floatToByte315(((float)(1.0 / (5.0 * 5.0))));
+		assertEquals(a, b);
+	}</programlisting>
+	<para>从上例可以看出，lucene默认的计算fieldnorm的方法针对文档词数量差距较大的时候，词占比高的会排在前面，但当文档个数相差不大的情况下，就会导致排序结果紊乱，解决方法就是制造差距，将文档的词个数开平方。</para>
+      </section>
+    </section>
+    <section xml:id="q-3">
+      <title>HashMap init capacity 跟 length 的关系</title>
+      <para>根据<xref linkend="HashMapdoc"/>,默认的加载因子是0.75,该值可以在时空代价中起到一个很好的平衡.值越高会降低空间消耗但是会增加时间消耗。为了减少<literal>rehash</literal>操作，创建HashMap对象的时候初始容量要考虑该对象期望的总数以及加载因子这两个因素，以便<literal>rehash</literal>操作不会发生。</para>
+      <para>这就意味着，默认的0.75最好不要修改，除非你需要特定的优化操作,具体的initCapacity=(期望最大数量 / 0.75) + 1。</para>
+    </section>
+    <section xml:id="q-4">
+      <title>Hash原理，HashMap是否线性安全？</title>
+      <section>
+	<title>原理</title>
+	<para>使用一个比较大的数组来存放元素，可以设计一个哈希函数，使得每个元素的关键字都与一个函数值即数组下标对应，但是不能保证所有的key跟函数值都是一一对应的，此时就会出现"冲突"。因此，当数据规模接近哈希表上界或者下界的时候，哈希表完全不能体现高效的特点，甚至还不如一般的算法。但如果在中央，它的高效就可体现，所以给我们一个提示，如果想充分利用hash的高效性，应该尽可能的将数组开大，但是开大有很浪费空间，所以就需要我们寻找一个平衡点，即上节的<literal>加载因子</literal>。</para>	
+      </section>
+      <section>
+	<title>HashMap是否线性安全？</title>
+	<para>不是线程安全的，HashMap默认的initCapacity值是16,加载因子是0.75,阀值是12。一般存储数量都会大于12个，这样就会造成扩容操作，该过程就会引发线程问题。同样，一个线程达到阀值，另一个线程读也会存在问题，因为rehash的时候用一个元素的索引index会改变。我们常用的ArrayList,TreeMap也不是线程安全的。</para>
+	<note>
+	  <title>什么线性安全?</title>
+	  <itemizedlist>
+	    <listitem>
+	      <para>安全使用TreeMap的方法:SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));</para>
+	    </listitem>
+	    <listitem>
+	      <para>JDK1.0引入的HashTable是线程安全的,同步的包装器synchronizedMap是有条件线程安全的,JDK5.0引入的ConcurrentHashMap比起synchronizeMap更加灵活,可并发的执行读写操作。</para>
+	    </listitem>
+	  </itemizedlist>
+	</note>
+      </section>
+    </section>
+    <section xml:id="q-5">
+      <title>算法:堆排序(HeapSort)</title>
+      <section>
+	<title>原理</title>
+	<para>堆排序的时间复杂度为O(N*logN)。</para>
+      </section>
+      <section>
+	<title>代码</title>
+	<para></para>
+      </section>
+    </section>
+  </section>
+
+  <bibliography>
+    <title>参考资料</title>
+    <biblioentry xml:id="BI_001">
+      <title>Hadoop Map/Reduce 教程</title>
+      <author>
+	<personname>Apache</personname>
+      </author>
+      <editor>
+	<personname>淘宝技术团队(译)</personname>
+      </editor>
+      <edition>r0.20.2</edition>
+      <bibliosource class="uri">
+	<link xlink:href="http://hadoop.apache.org/docs/r0.20.2/cn/mapred_tutorial.html#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0">http://hadoop.apache.org/docs/r0.20.2/cn/mapred_tutorial.html</link>
+      </bibliosource>
+    </biblioentry>
+    <biblioentry xml:id="BI_002">
+      <title>Hadoop 原理</title>
+      <author>
+	<personname>阿泰</personname>
+      </author>
+      <bibliosource class="uri">
+	<link xlink:href="http://arch.huatai.me/?p=347">http://arch.huatai.me/?p=347</link>
+      </bibliosource>
+    </biblioentry>
+    <biblioentry xml:id="BI_003">
+      <title>MapReduce 源码总结</title>
+      <author>
+	<personname>HEYUTAO007</personname>
+      </author>
+      <bibliosource class="uri">
+	<link xlink:href="http://blog.csdn.net/HEYUTAO007/article/details/5725379">http://blog.csdn.net/HEYUTAO007/article/details/5725379</link>
+      </bibliosource>
+    </biblioentry>
+    <biblioentry xml:id="BI_004">
+      <title>HashMap initialization parameters (load/initialcapacity)</title>
+      <bibliosource class="uri">
+	<link xlink:href="http://stackoverflow.com/questions/434989/hashmap-intialization-parameters-load-initialcapacity">http://stackoverflow.com/questions/434989/hashmap-intialization-parameters-load-initialcapacity</link>
+      </bibliosource>
+    </biblioentry>
+    <biblioentry xml:id="HashMapdoc">
+      <title>HashMap javadoc</title>
+      <bibliosource class="uri">
+	<link xlink:href="http://java.sun.com/javase/6/docs/api/java/util/HashMap.html">http://java.sun.com/javase/6/docs/api/java/util/HashMap.html</link>
+      </bibliosource>
+    </biblioentry>
+    <biblioentry xml:id="HeapSort">
+      <title>堆与堆排序</title>
+      <bibliosource class="uri">
+	<link xlink:href="http://blog.csdn.net/morewindows/article/details/6709644">http://blog.csdn.net/morewindows/article/details/6709644</link>
+      </bibliosource>
+    </biblioentry>
+  </bibliography>
+
+</article>

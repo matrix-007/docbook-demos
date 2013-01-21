@@ -7,7 +7,7 @@
 		This file is part of the XSL DocBook Stylesheet distribution. See ../README 
 		or http://docbook.sf.net/release/xsl/current/ for and other information. 
 		******************************************************************** -->
-	<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/highlighting/common.xsl" />
+	<xsl:import href="common.xsl" />
 
 	<xsl:template match="xslthl:keyword" mode="xslthl">
 		<strong class="hl-keyword" style="color: #7f0055">
