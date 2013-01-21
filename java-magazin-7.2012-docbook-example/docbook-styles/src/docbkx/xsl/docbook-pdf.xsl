@@ -57,17 +57,17 @@
   <xsl:param name="symbol.font.family" />
 
   <!-- 宋体属于serif字体，通常跟Times搭配 -->
-  <xsl:param name="body.font.family" select="'TimesNewRoman,SimSun'"/>
+  <xsl:param name="body.font.family" select="'TimesNewRoman,WenQuanYiMicroHei'"/>
 
-  <xsl:param name="title.font.family" select="'Helvetica,DroidSansFallback'"/>
+  <xsl:param name="title.font.family" select="'WenQuanYiMicroHei'"/>
 
-  <xsl:param name="dingbat.font.family" select="'Helvetica,DroidSansFallback'"/>
+  <xsl:param name="dingbat.font.family" select="'WenQuanYiMicroHei'"/>
 
   <!-- sans 字体 没有额外修饰的字体 常见的有:Arial, Helvetica -->
-  <xsl:param name="sans.font.family" select="'Helvetica,DroidSansFallback'"/>
+  <xsl:param name="sans.font.family" select="'Helvetica,WenQuanYiMicroHei'"/>
 
   <!-- fixed width,typewriter font. -->
-  <xsl:param name="monospace.font.family" select="'DroidSansMono,DroidSansFallback'"/>
+  <xsl:param name="monospace.font.family" select="'monospace,WenQuanYiMicroHeiMono'"/>
   
   <xsl:param name="draft.mode" select="'no'"/>
   
@@ -82,7 +82,7 @@
   </xsl:attribute-set>
 
   <xsl:attribute-set name="admonition.title.properties">
-    <xsl:attribute name="font-family">'Helvetica','DroidSansFallback'</xsl:attribute>
+    <xsl:attribute name="font-family">'WenQuanYiMicroHei'</xsl:attribute>
     <xsl:attribute name="font-size">80%</xsl:attribute>
     <xsl:attribute name="font-weight">bold</xsl:attribute>
     <xsl:attribute name="color">#1c4c7d</xsl:attribute>

@@ -164,6 +164,20 @@
 							<metricsFile>${workDirectory}/fonts/SimSun/SimSun-Bold-metrics.xml</metricsFile>
 						</font>
 						<font>
+							<name>WenQuanYiMicroHei</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/fonts/WenQuanYiMicroHei/WenQuanYiMicroHei.ttf</embedFile>
+							<metricsFile>${workDirectory}/fonts/WenQuanYiMicroHei/WenQuanYiMicroHei-metrics.xml</metricsFile>
+						</font>
+						<font>
+							<name>WenQuanYiMicroHeiMono</name>
+							<style>normal</style>
+							<weight>normal</weight>
+							<embedFile>${workDirectory}/fonts/WenQuanYiMicroHei/WenQuanYiMicroHeiMono.ttf</embedFile>
+							<metricsFile>${workDirectory}/fonts/WenQuanYiMicroHei/WenQuanYiMicroHeiMono-metrics.xml</metricsFile>
+						</font>
+						<font>
 							<name>SimSun</name>
 							<style>normal</style>
 							<weight>normal</weight>
